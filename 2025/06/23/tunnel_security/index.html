@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>隧道风险预警系统</title>
+    </head>
+    <body>
+<h1><strong>隧道风险预警系统</strong></h1>
+
+<ul>
+<li><a href="#隧道风险预警系统"><strong>隧道风险预警系统</strong></a>
+<ul>
+<li><a href="#i-引言"><strong>I. 引言</strong></a>
+<ul>
+<li><a href="#11-隧道概述与分类"><strong>1.1 隧道概述与分类</strong></a></li>
+<li><a href="#12-隧道交通安全挑战与风险预警系统的重要性"><strong>1.2 隧道交通安全挑战与风险预警系统的重要性</strong></a></li>
+</ul></li>
+<li><a href="#ii-隧道特有风险分析"><strong>II. 隧道特有风险分析</strong></a>
+<ul>
+<li><a href="#21-交通事件风险"><strong>2.1 交通事件风险</strong></a></li>
+<li><a href="#22-火灾风险"><strong>2.2 火灾风险</strong></a></li>
+<li><a href="#23-地质与结构风险"><strong>2.3 地质与结构风险</strong></a></li>
+<li><a href="#24-环境与运营风险"><strong>2.4 环境与运营风险</strong></a></li>
+</ul></li>
+<li><a href="#iii-隧道风险预警系统架构与功能"><strong>III. 隧道风险预警系统架构与功能</strong></a>
+<ul>
+<li><a href="#31-系统目标与意义"><strong>3.1 系统目标与意义</strong></a></li>
+<li><a href="#32-系统总体架构"><strong>3.2 系统总体架构</strong></a></li>
+<li><a href="#33-核心功能模块"><strong>3.3 核心功能模块</strong></a></li>
+</ul></li>
+<li><a href="#iv-关键技术与传感器应用"><strong>IV. 关键技术与传感器应用</strong></a>
+<ul>
+<li><a href="#41-交通流与事件检测技术"><strong>4.1 交通流与事件检测技术</strong></a></li>
+<li><a href="#42-环境监测技术"><strong>4.2 环境监测技术</strong></a></li>
+<li><a href="#43-结构健康监测技术"><strong>4.3 结构健康监测技术</strong></a></li>
+<li><a href="#44-机器人巡检与智能运维"><strong>4.4 机器人巡检与智能运维</strong></a></li>
+<li><a href="#45-数字孪生与车路协同"><strong>4.5 数字孪生与车路协同</strong></a></li>
+</ul></li>
+<li><a href="#v-隧道风险预警系统建设与运营管理"><strong>V. 隧道风险预警系统建设与运营管理</strong></a>
+<ul>
+<li><a href="#51-相关设计与运营规范"><strong>5.1 相关设计与运营规范</strong></a></li>
+<li><a href="#52-应急预案与演练"><strong>5.2 应急预案与演练</strong></a></li>
+<li><a href="#53-智能运维与发展趋势"><strong>5.3 智能运维与发展趋势</strong></a></li>
+</ul></li>
+<li><a href="#vi-结论与展望"><strong>VI. 结论与展望</strong></a>
+<ul>
+<li><a href="#61-结论"><strong>6.1 结论</strong></a></li>
+<li><a href="#62-展望"><strong>6.2 展望</strong></a>
+<ul>
+<li><a href="#引用的资料"><strong>引用的资料</strong></a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p><strong><font color="CadetBlue">变更历史</font></strong></p>
+
+<table>
+<thead>
+<tr>
+  <th>日期时间</th>
+  <th>类型</th>
+  <th>作者</th>
+  <th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>2025-06-20</td>
+  <td>增</td>
+  <td>Capric</td>
+  <td>分类、传感器、参考资料</td>
+</tr>
+<tr>
+  <td>2025-06-23</td>
+  <td>增</td>
+  <td>Capric</td>
+  <td>相关国标、产品目录、图表</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong><font color="DarkKhaki">产品目录</font></strong></p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:left;">参数</th>
+  <th style="text-align:left;">类型</th>
+  <th style="text-align:left;">关键特性</th>
+  <th style="text-align:left;">厂商</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left;">交通流状态检测</td>
+  <td style="text-align:left;">可见光摄像头</td>
+  <td style="text-align:left;">目标检测、追踪；AI分析；低照度适应性</td>
+  <td style="text-align:left;">微创、海康、大华、宇视、天地通、华为</td>
+</tr>
+<tr>
+  <td style="text-align:left;">交通流状态检测</td>
+  <td style="text-align:left;">红外摄像头</td>
+  <td style="text-align:left;">目标检测、测温；烟雾识别；恶劣能见度穿透性好</td>
+  <td style="text-align:left;">海康、高德、大恒、Allied Vision、Blue Vision、Xenics</td>
+</tr>
+<tr>
+  <td style="text-align:left;">交通流状态检测</td>
+  <td style="text-align:left;">微波雷达</td>
+  <td style="text-align:left;">车流检测、测距；恶劣天气穿透性好</td>
+  <td style="text-align:left;">博世、大陆、海拉、德尔福、富士通天、电装</td>
+</tr>
+<tr>
+  <td style="text-align:left;">交通流状态检测</td>
+  <td style="text-align:left;">激光雷达</td>
+  <td style="text-align:left;">车流检测、测距；远距离、高精度探测</td>
+  <td style="text-align:left;">禾赛科技、速腾聚创、Luminar、法雷奥</td>
+</tr>
+<tr>
+  <td style="text-align:left;">交通流状态检测</td>
+  <td style="text-align:left;">感应环路传感器</td>
+  <td style="text-align:left;">车辆存在、流量、速度检测</td>
+  <td style="text-align:left;">安森美、意法、德仪、博世、科锐、TE、村田、多维</td>
+</tr>
+<tr>
+  <td style="text-align:left;">交通流状态检测</td>
+  <td style="text-align:left;">浮动车传感器</td>
+  <td style="text-align:left;">实时路况信息；大范围、动态交通流数据</td>
+  <td style="text-align:left;">博世、森萨塔、恩智浦、英飞凌、TDK</td>
+</tr>
+<tr>
+  <td style="text-align:left;">交通流状态检测</td>
+  <td style="text-align:left;">AI智能视频终端</td>
+  <td style="text-align:left;">智能算法与前端设备结合；设备端数据解算、处理、分析</td>
+  <td style="text-align:left;">微创、商汤、海康、大华</td>
+</tr>
+<tr>
+  <td style="text-align:left;">环境条件监测</td>
+  <td style="text-align:left;">温度传感器</td>
+  <td style="text-align:left;">监测隧道结构内外温度；热胀冷缩效应</td>
+  <td style="text-align:left;">TE Connectivity、纳芯微（Novos）</td>
+</tr>
+<tr>
+  <td style="text-align:left;">环境条件监测</td>
+  <td style="text-align:left;">湿度传感器</td>
+  <td style="text-align:left;">监测隧道内外湿度；材料耐久性影响</td>
+  <td style="text-align:left;">Vaisala（维萨拉）、SmartSolo Scientific（面元科学仪器）</td>
+</tr>
+<tr>
+  <td style="text-align:left;">环境条件监测</td>
+  <td style="text-align:left;">雨量计</td>
+  <td style="text-align:left;">实时监测隧道出入口降雨量；评估积水风险</td>
+  <td style="text-align:left;">北京华益瑞、万象环境、天泽科技、北京精诚华泰、云蓝风汇、Hach（哈希）</td>
+</tr>
+<tr>
+  <td style="text-align:left;">环境条件监测</td>
+  <td style="text-align:left;">能见度检测仪</td>
+  <td style="text-align:left;">监测隧道内部能见度；雾、烟雾、灰尘影响</td>
+  <td style="text-align:left;">山东天格光电、潍坊瑞格、富奥通、Campbell、Enviro、Young、Belfort</td>
+</tr>
+<tr>
+  <td style="text-align:left;">环境条件监测</td>
+  <td style="text-align:left;">有害气体浓度传感器</td>
+  <td style="text-align:left;">监测CO、NOx、PM2.5、CH4等气体浓度；通风系统联动</td>
+  <td style="text-align:left;">深传感、格林杜尔、博纳德、汉威、炜盛、Honeywell、西门子、MSA、City、FIGARO、安费诺</td>
+</tr>
+<tr>
+  <td style="text-align:left;">环境条件监测</td>
+  <td style="text-align:left;">风速风向传感器</td>
+  <td style="text-align:left;">监测隧道内风向风速；优化通风控制</td>
+  <td style="text-align:left;">SmartSolo Scientific（面元科学仪器）、DEIF（丹控电气）</td>
+</tr>
+<tr>
+  <td style="text-align:left;">基础设施结构健康监测</td>
+  <td style="text-align:left;">位移传感器</td>
+  <td style="text-align:left;">监测衬砌、围岩位移；变形早期预警</td>
+  <td style="text-align:left;">MTS、科陆电子、炜衡、航天科技、TE、巴鲁夫、施克、倍加福</td>
+</tr>
+<tr>
+  <td style="text-align:left;">基础设施结构健康监测</td>
+  <td style="text-align:left;">变形传感器</td>
+  <td style="text-align:left;">监测结构变形、裂缝扩展</td>
+  <td style="text-align:left;">柯力传感、中航电测、威世、HBM、梅特勒-托利多、富林泰克、NMB</td>
+</tr>
+<tr>
+  <td style="text-align:left;">基础设施结构健康监测</td>
+  <td style="text-align:left;">渗流传感器</td>
+  <td style="text-align:left;">监测隧道渗水、排水系统状态</td>
+  <td style="text-align:left;">Honeywell、西克、倍加福、艾默生、WIKA、ABB</td>
+</tr>
+<tr>
+  <td style="text-align:left;">基础设施结构健康监测</td>
+  <td style="text-align:left;">光纤传感器</td>
+  <td style="text-align:left;">空间连续监测（分布式）；抗干扰、耐腐蚀、寿命长</td>
+  <td style="text-align:left;">基恩士、松下、欧姆龙、西克、邦纳、倍加福、劳易测、理工光科</td>
+</tr>
+<tr>
+  <td style="text-align:left;">基础设施结构健康监测</td>
+  <td style="text-align:left;">振动传感器</td>
+  <td style="text-align:left;">监测结构振动；早期发现异常</td>
+  <td style="text-align:left;">上海振动器厂、上海航振、上海瑞鸿、北京华兴、泰隆电子</td>
+</tr>
+<tr>
+  <td style="text-align:left;">基础设施结构健康监测</td>
+  <td style="text-align:left;">压力传感器</td>
+  <td style="text-align:left;">监测围岩压力、衬砌受力状态；智能螺母预警</td>
+  <td style="text-align:left;">麦克传感、华天科技、苏州明皜、中航电测、上海芯敏、东方万和、Honeywell、西克、博世</td>
+</tr>
+<tr>
+  <td style="text-align:left;">基础设施结构健康监测</td>
+  <td style="text-align:left;">水压传感器</td>
+  <td style="text-align:left;">监测排水管网水压；评估爆管、塌陷风险</td>
+  <td style="text-align:left;">佛山普量、佛山天华、佛山贺迪、深圳泰科芯元、格林福</td>
+</tr>
+<tr>
+  <td style="text-align:left;">基础设施结构健康监测</td>
+  <td style="text-align:left;">流量传感器</td>
+  <td style="text-align:left;">监测排水管网流量；评估水患风险</td>
+  <td style="text-align:left;">川仪、威尔泰、E+H、艾默生、科隆、西门子、ABB、OMEGA、Honeywell、欧姆龙</td>
+</tr>
+<tr>
+  <td style="text-align:left;">基础设施结构健康监测</td>
+  <td style="text-align:left;">卫星遥感</td>
+  <td style="text-align:left;">毫米级形变监测（InSAR）；大范围、非接触、高精度</td>
+  <td style="text-align:left;">中国航天、中国空间技术研究院、上海航天技术研究院、中国东方红卫星、中国卫星、四维图新、中科星图、航天宏图、北京揽宇方圆、长光卫星</td>
+</tr>
+<tr>
+  <td style="text-align:left;">基础设施结构健康监测</td>
+  <td style="text-align:left;">高精准定位器</td>
+  <td style="text-align:left;">隧道结构毫米级高精度定位监测；基于北斗/GNSS技术</td>
+  <td style="text-align:left;">司南导航、和芯星通、北方华创、南方测绘、六分科技、u-blox、世导通、大疆D-RTK</td>
+</tr>
+<tr>
+  <td style="text-align:left;">辅助监测与巡检</td>
+  <td style="text-align:left;">无人机</td>
+  <td style="text-align:left;">高效率、高分辨率视觉检查；AI算法识别</td>
+  <td style="text-align:left;">大疆、Parrot、昊翔、道通、亿航、航天彩虹、中科遥感</td>
+</tr>
+<tr>
+  <td style="text-align:left;">辅助监测与巡检</td>
+  <td style="text-align:left;">机器人巡检</td>
+  <td style="text-align:left;">自动化巡检；高效率、高安全性；可达人工难触及区域</td>
+  <td style="text-align:left;">主流机器人厂商、智能巡检系统集成商</td>
+</tr>
+<tr>
+  <td style="text-align:left;">智能系统与平台</td>
+  <td style="text-align:left;">AI智能体分析</td>
+  <td style="text-align:left;">分析传感器数据、图片、文本报告；自动评估结构健康状态；预测寿命；生成警报</td>
+  <td style="text-align:left;">中交路桥科技、扣子、文心智能、司马诸葛、智谱清言、腾讯元器、LinkAI</td>
+</tr>
+<tr>
+  <td style="text-align:left;">智能系统与平台</td>
+  <td style="text-align:left;">IoT隧道监控系统</td>
+  <td style="text-align:left;">整合设备和传感器；构建互联交通监控系统；提高流动性和安全性</td>
+  <td style="text-align:left;">Digi International、研华、华为、中兴、海康、大华</td>
+</tr>
+<tr>
+  <td style="text-align:left;">智能系统与平台</td>
+  <td style="text-align:left;">城市安全风险综合监测预警平台</td>
+  <td style="text-align:left;">风险监测感知层；全方位、立体化感知城市生命线、公共安全、生产安全和自然灾害等风险</td>
+  <td style="text-align:left;">赛飞特、辰安科技、泰策科技、万宾科技</td>
+</tr>
+<tr>
+  <td style="text-align:left;">智能系统与平台</td>
+  <td style="text-align:left;">数据服务层</td>
+  <td style="text-align:left;">各行业领域监测感知数据汇聚、处理；数据存储、治理、计算；城市安全专题数据库建设</td>
+  <td style="text-align:left;">数据库厂商</td>
+</tr>
+<tr>
+  <td style="text-align:left;">智能系统与平台</td>
+  <td style="text-align:left;">智能交通决策支持系统</td>
+  <td style="text-align:left;">汇集多种高新技术；实时和预测交通状况发布；优化交通流量</td>
+  <td style="text-align:left;">华为、商汤、久其软件、北京京东世纪</td>
+</tr>
+<tr>
+  <td style="text-align:left;">智能系统与平台</td>
+  <td style="text-align:left;">车路协同技术</td>
+  <td style="text-align:left;">道路端传感器补充车载感知能力；提升自动驾驶效率和安全性</td>
+  <td style="text-align:left;">百度、大唐高鸿、北京千方、北京万集、华为、江苏雷科防务、深圳金溢、图达通智能、海康、中国汽车工程研究院</td>
+</tr>
+<tr>
+  <td style="text-align:left;">智能系统与平台</td>
+  <td style="text-align:left;">智能路侧设备</td>
+  <td style="text-align:left;">实现车路之间可靠的高速数据通信</td>
+  <td style="text-align:left;">同车路协同技术厂商</td>
+</tr>
+<tr>
+  <td style="text-align:left;">智能系统与平台</td>
+  <td style="text-align:left;">智能车载设备</td>
+  <td style="text-align:left;">提供辅助驾驶和V2X应用功能</td>
+  <td style="text-align:left;">新能源汽车厂商、辅助驾驶厂商</td>
+</tr>
+<tr>
+  <td style="text-align:left;">智能系统与平台</td>
+  <td style="text-align:left;">数字孪生隧道</td>
+  <td style="text-align:left;">隧道基础设施全要素、全周期数字化；虚拟模型与实体映射；模拟、预测、运维决策</td>
+  <td style="text-align:left;">超图软件、神州数码、亚信、GIS厂商</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong><font color="DarkKhaki">数字孪生隧道 —— 智能监测、预警、决策系统</font></strong></p>
+
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="0 0 648 2774" style="max-width: 648px; background-color: white;" class="flowchart" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100%" id="my-svg"><style>#my-svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#552222;}#my-svg .error-text{fill:#552222;stroke:#552222;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#333333;stroke:#333333;}#my-svg .marker.cross{stroke:#333333;}#my-svg svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#my-svg p{margin:0;}#my-svg .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#my-svg .cluster-label text{fill:#333;}#my-svg .cluster-label span{color:#333;}#my-svg .cluster-label span p{background-color:transparent;}#my-svg .label text,#my-svg span{fill:#333;color:#333;}#my-svg .node rect,#my-svg .node circle,#my-svg .node ellipse,#my-svg .node polygon,#my-svg .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#my-svg .rough-node .label text,#my-svg .node .label text,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-anchor:middle;}#my-svg .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#my-svg .rough-node .label,#my-svg .node .label,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-align:center;}#my-svg .node.clickable{cursor:pointer;}#my-svg .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#my-svg .arrowheadPath{fill:#333333;}#my-svg .edgePath .path{stroke:#333333;stroke-width:2.0px;}#my-svg .flowchart-link{stroke:#333333;fill:none;}#my-svg .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#my-svg .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#my-svg .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#my-svg .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#my-svg .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#my-svg .cluster text{fill:#333;}#my-svg .cluster span{color:#333;}#my-svg div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#my-svg .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#my-svg rect.text{fill:none;stroke-width:0;}#my-svg .icon-shape,#my-svg .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#my-svg .icon-shape p,#my-svg .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#my-svg .icon-shape rect,#my-svg .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker orient="auto" markerHeight="8" markerWidth="8" markerUnits="userSpaceOnUse" refY="5" refX="5" viewBox="0 0 10 10" class="marker flowchart-v2" id="my-svg_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"/></marker><marker orient="auto" markerHeight="8" markerWidth="8" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart-v2" id="my-svg_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"/></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart-v2" id="my-svg_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"/></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart-v2" id="my-svg_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"/></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart-v2" id="my-svg_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"/></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart-v2" id="my-svg_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"/></marker><g class="root"><g class="clusters"/><g class="edgePaths"><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_DA_0" d="M188,35L196.167,35C204.333,35,220.667,35,246.909,255.169C273.152,475.338,309.304,915.676,327.38,1135.845L345.456,1356.013"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_DA_0" d="M180,139L189.5,139C199,139,218,139,245.541,341.836C273.081,544.672,309.163,950.344,327.203,1153.18L345.244,1356.016"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_DA_0" d="M172,243L182.833,243C193.667,243,215.333,243,244.166,428.503C272.998,614.006,308.996,985.012,326.995,1170.516L344.994,1356.019"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_D_DA_0" d="M172,347L182.833,347C193.667,347,215.333,347,244.116,515.17C272.898,683.341,308.796,1019.682,326.745,1187.852L344.694,1356.023"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_E_DA_0" d="M196,451L202.833,451C209.667,451,223.333,451,248.055,601.838C272.776,752.676,308.551,1054.352,326.439,1205.19L344.327,1356.028"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_F_DA_0" d="M188,555L196.167,555C204.333,555,220.667,555,246.645,688.506C272.623,822.012,308.246,1089.023,326.057,1222.529L343.869,1356.035"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_G_DA_0" d="M194.5,659L201.583,659C208.667,659,222.833,659,247.63,775.174C272.427,891.349,307.854,1123.697,325.567,1239.871L343.28,1356.046"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_H_DA_0" d="M180,763L189.5,763C199,763,218,763,245.083,861.844C272.166,960.687,307.331,1158.375,324.914,1257.218L342.497,1356.062"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_I_DA_0" d="M180,867L189.5,867C199,867,218,867,244.9,948.515C271.801,1030.029,306.601,1193.059,324.001,1274.573L341.402,1356.088"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_J_DA_0" d="M164,971L176.167,971C188.333,971,212.667,971,241.961,1035.189C271.255,1099.378,305.51,1227.757,322.637,1291.946L339.764,1356.135"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_K_DA_0" d="M188,1075L196.167,1075C204.333,1075,220.667,1075,245.509,1121.872C270.351,1168.744,303.702,1262.488,320.378,1309.359L337.053,1356.231"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_L_DA_0" d="M212,1179L216.167,1179C220.333,1179,228.667,1179,248.618,1208.579C268.569,1238.157,300.139,1297.314,315.923,1326.893L331.708,1356.471"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_M_DA_0" d="M196,1283L202.833,1283C209.667,1283,223.333,1283,243.377,1295.378C263.421,1307.755,289.842,1332.51,303.053,1344.888L316.264,1357.265"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_N_DA_0" d="M180,1387L189.5,1387C199,1387,218,1387,231,1387C244,1387,251,1387,254.5,1387L258,1387"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_O_DA_0" d="M180,1491L189.5,1491C199,1491,218,1491,240.711,1478.622C263.421,1466.245,289.842,1441.49,303.053,1429.112L316.264,1416.735"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_P_DA_0" d="M180,1595L189.5,1595C199,1595,218,1595,243.285,1565.421C268.569,1535.843,300.139,1476.686,315.923,1447.107L331.708,1417.529"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_Q_DA_0" d="M180,1699L189.5,1699C199,1699,218,1699,244.176,1652.128C270.351,1605.256,303.702,1511.512,320.378,1464.641L337.053,1417.769"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_R_DA_0" d="M180,1803L189.5,1803C199,1803,218,1803,244.627,1738.811C271.255,1674.622,305.51,1546.243,322.637,1482.054L339.764,1417.865"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_S_DA_0" d="M180,1907L189.5,1907C199,1907,218,1907,244.9,1825.485C271.801,1743.971,306.601,1580.941,324.001,1499.427L341.402,1417.912"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_T_DA_0" d="M180,2011L189.5,2011C199,2011,218,2011,245.083,1912.156C272.166,1813.313,307.331,1615.625,324.914,1516.782L342.497,1417.938"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_U_DA_0" d="M180,2115L189.5,2115C199,2115,218,2115,245.213,1998.826C272.427,1882.651,307.854,1650.303,325.567,1534.129L343.28,1417.954"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_V_DA_0" d="M172,2219L182.833,2219C193.667,2219,215.333,2219,243.978,2085.494C272.623,1951.988,308.246,1684.977,326.057,1551.471L343.869,1417.965"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_W_DA_0" d="M188,2323L196.167,2323C204.333,2323,220.667,2323,246.721,2172.162C272.776,2021.324,308.551,1719.648,326.439,1568.81L344.327,1417.972"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_X_DA_0" d="M164,2427L176.167,2427C188.333,2427,212.667,2427,242.782,2258.83C272.898,2090.659,308.796,1754.318,326.745,1586.148L344.694,1417.977"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_Y_DA_0" d="M180,2531L189.5,2531C199,2531,218,2531,245.499,2345.497C272.998,2159.994,308.996,1788.988,326.995,1603.484L344.994,1417.981"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_Z_DA_0" d="M188,2635L196.167,2635C204.333,2635,220.667,2635,246.874,2432.164C273.081,2229.328,309.163,1823.656,327.203,1620.82L345.244,1417.984"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A1_DA_0" d="M188,2739L196.167,2739C204.333,2739,220.667,2739,246.909,2518.831C273.152,2298.662,309.304,1858.324,327.38,1638.155L345.456,1417.987"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DA_B1_0" d="M405.635,1360L414.529,1355.833C423.423,1351.667,441.212,1343.333,454.939,1339.167C468.667,1335,478.333,1335,483.167,1335L488,1335"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DA_C1_0" d="M405.635,1414L414.529,1418.167C423.423,1422.333,441.212,1430.667,453.606,1434.833C466,1439,473,1439,476.5,1439L480,1439"/></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(348, 1387)" id="flowchart-DA-0" class="node default"><rect height="54" width="172" y="-27" x="-86" style="fill:#f9f !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-56, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="112"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>数据采集与处理</p></span></div></foreignObject></g></g><g transform="translate(110, 35)" id="flowchart-A-1" class="node default"><rect height="54" width="156" y="-27" x="-78" style="" class="basic label-container"/><g transform="translate(-48, -12)" style="" class="label"><rect/><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>可见光摄像头</p></span></div></foreignObject></g></g><g transform="translate(110, 139)" id="flowchart-B-2" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>红外摄像头</p></span></div></foreignObject></g></g><g transform="translate(110, 243)" id="flowchart-C-3" class="node default"><rect height="54" width="124" y="-27" x="-62" style="" class="basic label-container"/><g transform="translate(-32, -12)" style="" class="label"><rect/><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>微波雷达</p></span></div></foreignObject></g></g><g transform="translate(110, 347)" id="flowchart-D-4" class="node default"><rect height="54" width="124" y="-27" x="-62" style="" class="basic label-container"/><g transform="translate(-32, -12)" style="" class="label"><rect/><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>激光雷达</p></span></div></foreignObject></g></g><g transform="translate(110, 451)" id="flowchart-E-5" class="node default"><rect height="54" width="172" y="-27" x="-86" style="" class="basic label-container"/><g transform="translate(-56, -12)" style="" class="label"><rect/><foreignObject height="24" width="112"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>感应环路传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 555)" id="flowchart-F-6" class="node default"><rect height="54" width="156" y="-27" x="-78" style="" class="basic label-container"/><g transform="translate(-48, -12)" style="" class="label"><rect/><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>浮动车传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 659)" id="flowchart-G-7" class="node default"><rect height="54" width="169" y="-27" x="-84.5" style="" class="basic label-container"/><g transform="translate(-54.5, -12)" style="" class="label"><rect/><foreignObject height="24" width="109"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>AI智能视频终端</p></span></div></foreignObject></g></g><g transform="translate(110, 763)" id="flowchart-H-8" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>温度传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 867)" id="flowchart-I-9" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>湿度传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 971)" id="flowchart-J-10" class="node default"><rect height="54" width="108" y="-27" x="-54" style="" class="basic label-container"/><g transform="translate(-24, -12)" style="" class="label"><rect/><foreignObject height="24" width="48"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>雨量计</p></span></div></foreignObject></g></g><g transform="translate(110, 1075)" id="flowchart-K-11" class="node default"><rect height="54" width="156" y="-27" x="-78" style="" class="basic label-container"/><g transform="translate(-48, -12)" style="" class="label"><rect/><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>能见度检测仪</p></span></div></foreignObject></g></g><g transform="translate(110, 1179)" id="flowchart-L-12" class="node default"><rect height="54" width="204" y="-27" x="-102" style="" class="basic label-container"/><g transform="translate(-72, -12)" style="" class="label"><rect/><foreignObject height="24" width="144"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>有害气体浓度传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 1283)" id="flowchart-M-13" class="node default"><rect height="54" width="172" y="-27" x="-86" style="" class="basic label-container"/><g transform="translate(-56, -12)" style="" class="label"><rect/><foreignObject height="24" width="112"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>风速风向传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 1387)" id="flowchart-N-14" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>位移传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 1491)" id="flowchart-O-15" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>变形传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 1595)" id="flowchart-P-16" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>渗流传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 1699)" id="flowchart-Q-17" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>光纤传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 1803)" id="flowchart-R-18" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>振动传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 1907)" id="flowchart-S-19" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>压力传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 2011)" id="flowchart-T-20" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>水压传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 2115)" id="flowchart-U-21" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>流量传感器</p></span></div></foreignObject></g></g><g transform="translate(110, 2219)" id="flowchart-V-22" class="node default"><rect height="54" width="124" y="-27" x="-62" style="" class="basic label-container"/><g transform="translate(-32, -12)" style="" class="label"><rect/><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>卫星遥感</p></span></div></foreignObject></g></g><g transform="translate(110, 2323)" id="flowchart-W-23" class="node default"><rect height="54" width="156" y="-27" x="-78" style="" class="basic label-container"/><g transform="translate(-48, -12)" style="" class="label"><rect/><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>高精准定位器</p></span></div></foreignObject></g></g><g transform="translate(110, 2427)" id="flowchart-X-24" class="node default"><rect height="54" width="108" y="-27" x="-54" style="" class="basic label-container"/><g transform="translate(-24, -12)" style="" class="label"><rect/><foreignObject height="24" width="48"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>无人机</p></span></div></foreignObject></g></g><g transform="translate(110, 2531)" id="flowchart-Y-25" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>机器人巡检</p></span></div></foreignObject></g></g><g transform="translate(110, 2635)" id="flowchart-Z-26" class="node default"><rect height="54" width="156" y="-27" x="-78" style="" class="basic label-container"/><g transform="translate(-48, -12)" style="" class="label"><rect/><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>智能路侧设备</p></span></div></foreignObject></g></g><g transform="translate(110, 2739)" id="flowchart-A1-27" class="node default"><rect height="54" width="156" y="-27" x="-78" style="" class="basic label-container"/><g transform="translate(-48, -12)" style="" class="label"><rect/><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>智能车载设备</p></span></div></foreignObject></g></g><g transform="translate(562, 1335)" id="flowchart-B1-28" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"/><g transform="translate(-40, -12)" style="" class="label"><rect/><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>控制执行器</p></span></div></foreignObject></g></g><g transform="translate(562, 1439)" id="flowchart-C1-29" class="node default"><rect height="54" width="156" y="-27" x="-78" style="" class="basic label-container"/><g transform="translate(-48, -12)" style="" class="label"><rect/><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>预警发布系统</p></span></div></foreignObject></g></g></g></g></g></svg>
+
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="0 0 1489.5 1396" style="max-width: 1489.5px; background-color: white;" class="flowchart" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100%" id="my-svg"><style>#my-svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#552222;}#my-svg .error-text{fill:#552222;stroke:#552222;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#333333;stroke:#333333;}#my-svg .marker.cross{stroke:#333333;}#my-svg svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#my-svg p{margin:0;}#my-svg .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#my-svg .cluster-label text{fill:#333;}#my-svg .cluster-label span{color:#333;}#my-svg .cluster-label span p{background-color:transparent;}#my-svg .label text,#my-svg span{fill:#333;color:#333;}#my-svg .node rect,#my-svg .node circle,#my-svg .node ellipse,#my-svg .node polygon,#my-svg .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#my-svg .rough-node .label text,#my-svg .node .label text,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-anchor:middle;}#my-svg .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#my-svg .rough-node .label,#my-svg .node .label,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-align:center;}#my-svg .node.clickable{cursor:pointer;}#my-svg .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#my-svg .arrowheadPath{fill:#333333;}#my-svg .edgePath .path{stroke:#333333;stroke-width:2.0px;}#my-svg .flowchart-link{stroke:#333333;fill:none;}#my-svg .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#my-svg .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#my-svg .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#my-svg .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#my-svg .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#my-svg .cluster text{fill:#333;}#my-svg .cluster span{color:#333;}#my-svg div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#my-svg .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#my-svg rect.text{fill:none;stroke-width:0;}#my-svg .icon-shape,#my-svg .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#my-svg .icon-shape p,#my-svg .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#my-svg .icon-shape rect,#my-svg .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker orient="auto" markerHeight="8" markerWidth="8" markerUnits="userSpaceOnUse" refY="5" refX="5" viewBox="0 0 10 10" class="marker flowchart-v2" id="my-svg_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"/></marker><marker orient="auto" markerHeight="8" markerWidth="8" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart-v2" id="my-svg_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"/></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart-v2" id="my-svg_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"/></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart-v2" id="my-svg_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"/></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart-v2" id="my-svg_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"/></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart-v2" id="my-svg_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"/></marker><g class="root"><g class="clusters"><g data-look="classic" id="平台集成与数据服务" class="cluster"><rect height="256" width="330" y="545" x="71" style=""/><g transform="translate(164, 545)" class="cluster-label"><foreignObject height="24" width="144"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>平台集成与数据服务</p></span></div></foreignObject></g></g><g data-look="classic" id="决策与执行" class="cluster"><rect height="257" width="456" y="1131" x="8" style=""/><g transform="translate(196, 1131)" class="cluster-label"><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>决策与执行</p></span></div></foreignObject></g></g><g data-look="classic" id="智能隧道管理平台" class="cluster"><rect height="971" width="997.5" y="264" x="484" style=""/><g transform="translate(918.75, 264)" class="cluster-label"><foreignObject height="24" width="128"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>智能隧道管理平台</p></span></div></foreignObject></g></g></g><g class="edgePaths"><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DA_IoT_0" d="M822.5,62L822.5,68.167C822.5,74.333,822.5,86.667,822.5,98.333C822.5,110,822.5,121,822.5,126.5L822.5,132"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_IoT_DP_0" d="M822.5,190L822.5,196.167C822.5,202.333,822.5,214.667,822.5,227C822.5,239.333,822.5,251.667,822.5,261.333C822.5,271,822.5,278,822.5,281.5L822.5,285"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DP_DB_0" d="M798.875,343L793.479,349.167C788.083,355.333,777.292,367.667,776.303,379.475C775.315,391.283,784.129,402.565,788.536,408.207L792.944,413.848"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DP_DM_0" d="M916.5,329.429L975.5,337.857C1034.5,346.286,1152.5,363.143,1211.5,382.238C1270.5,401.333,1270.5,422.667,1270.5,444C1270.5,465.333,1270.5,486.667,1270.5,503.5C1270.5,520.333,1270.5,532.667,1277.547,544.579C1284.594,556.491,1298.688,567.982,1305.735,573.727L1312.783,579.472"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DP_MA_0" d="M885.992,343L900.493,349.167C914.995,355.333,943.997,367.667,958.499,384.5C973,401.333,973,422.667,973,444C973,465.333,973,486.667,973,503.5C973,520.333,973,532.667,973,549.5C973,566.333,973,587.667,973,611C973,634.333,973,659.667,988.277,678.259C1003.554,696.851,1034.108,708.702,1049.384,714.628L1064.661,720.553"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DB_MA_0" d="M910.5,460.923L954.083,468.769C997.667,476.615,1084.833,492.308,1128.417,506.32C1172,520.333,1172,532.667,1172,549.5C1172,566.333,1172,587.667,1172,611C1172,634.333,1172,659.667,1169.037,677.911C1166.073,696.156,1160.147,707.312,1157.184,712.89L1154.22,718.468"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DB_PE_0" d="M816.5,471L816.5,477.167C816.5,483.333,816.5,495.667,816.5,508C816.5,520.333,816.5,532.667,816.5,549.5C816.5,566.333,816.5,587.667,816.5,611C816.5,634.333,816.5,659.667,816.5,683C816.5,706.333,816.5,727.667,816.5,747C816.5,766.333,816.5,783.667,816.5,798.5C816.5,813.333,816.5,825.667,820.543,837.459C824.586,849.251,832.673,860.501,836.716,866.127L840.759,871.752"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DB_DM_0" d="M910.5,454.62L989.25,463.516C1068,472.413,1225.5,490.207,1304.25,505.27C1383,520.333,1383,532.667,1380.037,544.411C1377.073,556.156,1371.147,567.312,1368.184,572.89L1365.22,578.468"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DM_MA_0" d="M1349,636L1349,644.167C1349,652.333,1349,668.667,1329.307,682.806C1309.614,696.946,1270.229,708.893,1250.536,714.866L1230.843,720.839"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_MA_PE_0" d="M1045.5,769.959L1022.667,775.132C999.833,780.306,954.167,790.653,931.333,801.993C908.5,813.333,908.5,825.667,904.457,837.459C900.414,849.251,892.327,860.501,888.284,866.127L884.241,871.752"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_PE_DC_0" d="M955,917.437L1003.5,925.531C1052,933.625,1149,949.812,1197.5,963.406C1246,977,1246,988,1246,993.5L1246,999"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DC_AO_0" d="M1286.922,1057L1296.268,1063.167C1305.615,1069.333,1324.307,1081.667,1333.654,1094C1343,1106.333,1343,1118.667,1344.785,1128.404C1346.57,1138.141,1350.141,1145.282,1351.926,1148.852L1353.711,1152.422"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DC_UI_0" d="M1144,1040.817L1060.417,1049.681C976.833,1058.545,809.667,1076.272,726.083,1091.303C642.5,1106.333,642.5,1118.667,573.247,1131.901C503.993,1145.136,365.486,1159.272,296.233,1166.34L226.979,1173.408"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_PE_UI_0" d="M862.5,929L862.5,935.167C862.5,941.333,862.5,953.667,862.5,970.5C862.5,987.333,862.5,1008.667,862.5,1030C862.5,1051.333,862.5,1072.667,862.5,1089.5C862.5,1106.333,862.5,1118.667,756.582,1132.383C650.663,1146.1,438.827,1161.2,332.908,1168.75L226.99,1176.3"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DC_CRS_0" d="M1246,1057L1246,1063.167C1246,1069.333,1246,1081.667,1246,1094C1246,1106.333,1246,1118.667,1110.499,1132.706C974.998,1146.745,703.996,1162.491,568.494,1170.363L432.993,1178.236"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_CRS_SD_0" d="M351,1210L351,1214.167C351,1218.333,351,1226.667,351,1237C351,1247.333,351,1259.667,351,1271.333C351,1283,351,1294,351,1299.5L351,1305"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_UI_MA_0" d="M223,1178.138L368.417,1170.281C513.833,1162.425,804.667,1146.713,950.083,1132.69C1095.5,1118.667,1095.5,1106.333,1095.5,1089.5C1095.5,1072.667,1095.5,1051.333,1095.5,1030C1095.5,1008.667,1095.5,987.333,1095.5,966C1095.5,944.667,1095.5,923.333,1095.5,902C1095.5,880.667,1095.5,859.333,1095.5,842.5C1095.5,825.667,1095.5,813.333,1098.484,803.516C1101.467,793.699,1107.434,786.398,1110.418,782.748L1113.401,779.097"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_AO_MA_0" d="M1382.5,1156L1384.583,1151.833C1386.667,1147.667,1390.833,1139.333,1392.917,1129C1395,1118.667,1395,1106.333,1395,1089.5C1395,1072.667,1395,1051.333,1395,1030C1395,1008.667,1395,987.333,1395,966C1395,944.667,1395,923.333,1395,902C1395,880.667,1395,859.333,1395,842.5C1395,825.667,1395,813.333,1368.237,801.752C1341.474,790.17,1287.947,779.339,1261.184,773.924L1234.421,768.509"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DP_CSRMEP_0" d="M728.5,336.998L696.417,344.165C664.333,351.332,600.167,365.666,568.083,383.5C536,401.333,536,422.667,536,444C536,465.333,536,486.667,536,503.5C536,520.333,536,532.667,508.319,544.739C480.637,556.811,425.275,568.621,397.593,574.527L369.912,580.432"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DB_CSRMEP_0" d="M722.5,470.328L700.083,476.607C677.667,482.885,632.833,495.443,610.417,507.888C588,520.333,588,532.667,551.656,545.441C515.312,558.216,442.624,571.432,406.28,578.04L369.935,584.648"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_CSRMEP_ITSMS_0" d="M236,648L236,654.167C236,660.333,236,672.667,236,684.333C236,696,236,707,236,712.5L236,718"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DP_ITSMS_0" d="M759.008,343L744.507,349.167C730.005,355.333,701.003,367.667,686.501,384.5C672,401.333,672,422.667,672,444C672,465.333,672,486.667,672,503.5C672,520.333,672,532.667,672,549.5C672,566.333,672,587.667,672,611C672,634.333,672,659.667,618.326,680.212C564.653,700.757,457.305,716.515,403.631,724.394L349.958,732.272"/><path marker-end="url(#my-svg_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_DB_DP_0" d="M842.656,417L848.63,410.833C854.604,404.667,866.552,392.333,867.569,380.502C868.586,368.67,858.673,357.34,853.716,351.675L848.759,346.01"/></g><g class="edgeLabels"><g transform="translate(822.5, 99)" class="edgeLabel"><g transform="translate(-40, -12)" class="label"><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>实时数据流</p></span></div></foreignObject></g></g><g transform="translate(822.5, 227)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>融合数据</p></span></div></foreignObject></g></g><g transform="translate(766.5, 380)" class="edgeLabel"><g transform="translate(-40, -12)" class="label"><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>预处理数据</p></span></div></foreignObject></g></g><g transform="translate(1270.5, 444)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>融合数据</p></span></div></foreignObject></g></g><g transform="translate(973, 508)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>实时数据</p></span></div></foreignObject></g></g><g transform="translate(1172, 609)" class="edgeLabel"><g transform="translate(-48, -12)" class="label"><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>历史数据服务</p></span></div></foreignObject></g></g><g transform="translate(816.5, 685)" class="edgeLabel"><g transform="translate(-48, -12)" class="label"><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>历史数据服务</p></span></div></foreignObject></g></g><g transform="translate(1383, 508)" class="edgeLabel"><g transform="translate(-48, -12)" class="label"><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>历史数据服务</p></span></div></foreignObject></g></g><g transform="translate(1349, 685)" class="edgeLabel"><g transform="translate(-56, -12)" class="label"><foreignObject height="24" width="112"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>孪生状态与预测</p></span></div></foreignObject></g></g><g transform="translate(908.5, 838)" class="edgeLabel"><g transform="translate(-72, -12)" class="label"><foreignObject height="24" width="144"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>损伤识别与性能预测</p></span></div></foreignObject></g></g><g transform="translate(1246, 966)" class="edgeLabel"><g transform="translate(-48, -12)" class="label"><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>风险预警信息</p></span></div></foreignObject></g></g><g transform="translate(1343, 1094)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>控制指令</p></span></div></foreignObject></g></g><g transform="translate(642.5, 1094)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>决策支持</p></span></div></foreignObject></g></g><g transform="translate(862.5, 1030)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>预警发布</p></span></div></foreignObject></g></g><g transform="translate(1246, 1094)" class="edgeLabel"><g transform="translate(-45, -12)" class="label"><foreignObject height="24" width="90"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>V2X通信指令</p></span></div></foreignObject></g></g><g transform="translate(351, 1272)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>信息交互</p></span></div></foreignObject></g></g><g transform="translate(1095.5, 966)" class="edgeLabel"><g transform="translate(-56, -12)" class="label"><foreignObject height="24" width="112"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>用户输入与配置</p></span></div></foreignObject></g></g><g transform="translate(1395, 966)" class="edgeLabel"><g transform="translate(-48, -12)" class="label"><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>执行结果反馈</p></span></div></foreignObject></g></g><g transform="translate(536, 444)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>数据流向</p></span></div></foreignObject></g></g><g transform="translate(588, 508)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>数据服务</p></span></div></foreignObject></g></g><g transform="translate(236, 685)" class="edgeLabel"><g transform="translate(-48, -12)" class="label"><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>平台数据共享</p></span></div></foreignObject></g></g><g transform="translate(672, 508)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>数据流向</p></span></div></foreignObject></g></g><g transform="translate(878.5, 380)" class="edgeLabel"><g transform="translate(-40, -12)" class="label"><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>数据服务层</p></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(822.5, 35)" id="flowchart-DA-0" class="node default"><rect height="54" width="172" y="-27" x="-86" style="fill:#f9f !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-56, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="112"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>数据采集与处理</p></span></div></foreignObject></g></g><g transform="translate(822.5, 163)" id="flowchart-IoT-1" class="node default"><rect height="54" width="178" y="-27" x="-89" style="fill:#ff9 !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-59, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="118"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>IoT隧道监控系统</p></span></div></foreignObject></g></g><g transform="translate(822.5, 316)" id="flowchart-DP-2" class="node default"><rect height="54" width="188" y="-27" x="-94" style="fill:#ccf !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-64, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="128"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>大数据处理与融合</p></span></div></foreignObject></g></g><g transform="translate(816.5, 444)" id="flowchart-DB-3" class="node default"><rect height="54" width="188" y="-27" x="-94" style="fill:#9cf !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-64, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="128"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>大数据存储与管理</p></span></div></foreignObject></g></g><g transform="translate(1349, 609)" id="flowchart-DM-4" class="node default"><rect height="54" width="188" y="-27" x="-94" style="fill:#cfc !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-64, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="128"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>数字孪生隧道建模</p></span></div></foreignObject></g></g><g transform="translate(1138, 749)" id="flowchart-MA-5" class="node default"><rect height="54" width="185" y="-27" x="-92.5" style="fill:#ffc !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-62.5, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="125"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>AI智能监测与分析</p></span></div></foreignObject></g></g><g transform="translate(862.5, 902)" id="flowchart-PE-6" class="node default"><rect height="54" width="185" y="-27" x="-92.5" style="fill:#fcc !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-62.5, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="125"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>AI风险评估与预警</p></span></div></foreignObject></g></g><g transform="translate(1246, 1030)" id="flowchart-DC-7" class="node default"><rect height="54" width="204" y="-27" x="-102" style="fill:#cff !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-72, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="144"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>智能决策支持与控制</p></span></div></foreignObject></g></g><g transform="translate(1369, 1183)" id="flowchart-AO-8" class="node default"><rect height="54" width="140" y="-27" x="-70" style="fill:#ccc !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-40, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="80"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>行动与优化</p></span></div></foreignObject></g></g><g transform="translate(133, 1183)" id="flowchart-UI-9" class="node default"><rect height="54" width="180" y="-27" x="-90" style="fill:#f0c !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-60, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="120"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>用户界面/控制台</p></span></div></foreignObject></g></g><g transform="translate(351, 1336)" id="flowchart-SD-10" class="node default"><rect height="54" width="156" y="-27" x="-78" style="fill:#c0f !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-48, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="96"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>智能车载终端</p></span></div></foreignObject></g></g><g transform="translate(236, 609)" id="flowchart-CSRMEP-11" class="node default"><rect height="78" width="260" y="-39" x="-130" style="fill:#aaccff !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-100, -24)" style="color:#000 !important" class="label"><rect/><foreignObject height="48" width="200"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel" style="color:#000 !important"><p>城市安全风险综合监测预警平台</p></span></div></foreignObject></g></g><g transform="translate(236, 749)" id="flowchart-ITSMS-12" class="node default"><rect height="54" width="220" y="-27" x="-110" style="fill:#cceeff !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-80, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="160"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>智能交通决策支持系统</p></span></div></foreignObject></g></g><g transform="translate(351, 1183)" id="flowchart-CRS-13" class="node default"><rect height="54" width="156" y="-27" x="-78" style="fill:#eeccff !important;stroke:#333 !important;stroke-width:2px !important" class="basic label-container"/><g transform="translate(-48, -12)" style="color:#000 !important" class="label"><rect/><foreignObject height="24" width="96"><div xmlns="http://www.w3.org/1999/xhtml" style="color: rgb(0, 0, 0) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel" style="color:#000 !important"><p>车路协同技术</p></span></div></foreignObject></g></g></g></g></g></svg>
+
+<p><strong><font color="DarkKhaki">产品目录</font></strong></p>
+
+<h2><strong><font color="DodgerBlue">I. 引言</font></strong></h2>
+
+<h3><strong><font color="DarkViolet">1.1 隧道概述与分类</font></strong></h3>
+
+<p>隧道作为交通基础设施的重要组成部分，是供汽车和行人通行的封闭或半封闭通道 <sup><font color="red">1<color></font></sup>。本报告主要关注公路隧道，但鉴于铁路隧道和城市隧道在安全挑战上的共通性与独特性，亦将适时提及。公路隧道根据其等级和类型进行划分，例如高速公路、一级、二级、三级和四级公路隧道，以及钻爆隧道、盾构隧道、沉管隧道和明挖隧道等 <sup><font color="red">1<color></font></sup>。铁路隧道的设计则强调以人为本、服务运输、技术先进、经济耐久和便于养护维修的理念，主要适用于新建标准轨距铁路 <sup><font color="red">3<color></font></sup>。城市隧道在城市道路工程设计中占据重要地位，其景观设计旨在为使用者提供良好的体验，涵盖光环境、声环境和空气环境设计，并注重与周边环境的美学融合 <sup><font color="red">6<color></font></sup>。</p>
+
+<p>过去几十年，中国在铁路、公路隧道、水工隧洞、城市地铁隧道和综合管廊隧道建设方面取得了显著进展，涌现出大量特长、超深埋、超大断面、高海拔等重大工程 <sup><font color="red">10<color></font></sup>。这些重大工程的建设不仅推动了中国在隧道修建技术上的巨大进步，也为勘察、设计、施工、装备以及安全运维带来了巨大的技术挑战 <sup><font color="red">10<color></font></sup>。</p>
+
+<p>中国隧道建设的巨大规模和多样性，从高速铁路的特长隧道到城市地下管廊，表明风险预警系统不能采用一刀切的模式。这种规模和多样性，特别是不同类型隧道之间可能存在的相互关联或地理接近性（例如，城市区域内的公路隧道与地铁隧道），意味着单一隧道的安全事件可能在更广泛的交通基础设施网络中引发连锁反应。因此，将“道路风险预警系统”应用于隧道时，必须超越单个隧道的边界，考虑整个隧道网络或交通走廊内的系统性风险和相互依赖性。这要求预警系统具备更高的集成度和可扩展性，以实现一种网络化的安全管理模式。这种模式的实施意味着未来的预警系统需要重点关注数据共享、互操作性以及跨不同隧道类型和行政边界的协调响应，而非孤立的部署。</p>
+
+<h3><strong><font color="DarkViolet">1.2 隧道交通安全挑战与风险预警系统的重要性</font></strong></h3>
+
+<p>隧道与开放道路环境存在显著差异，其封闭或半封闭的特性极大地改变了交通流、环境条件和应急响应的复杂性。隧道内部空间有限，横断面狭窄，一旦发生火灾等事故，车辆难以向前行驶，导致人员疏散和救援面临巨大困难 <sup><font color="red">12<color></font></sup>。烟雾和热量在隧道内迅速积聚，严重影响能见度，并对人员健康构成威胁 <sup><font color="red">12<color></font></sup>。此外，隧道内外光照强度差异显著，可能导致驾驶员出现“黑洞”或“白洞”效应，暂时性视觉障碍，从而增加事故风险，尤其是在进出洞口区域 <sup><font color="red">17<color></font></sup>。与开放道路相比，隧道内事故的伤害严重性通常更高 <sup><font color="red">20<color></font></sup>。事故高发区域通常集中在隧道接近段和入口段 <sup><font color="red">20<color></font></sup>。</p>
+
+<p>为了有效降低这些风险，及时、准确的预警信息至关重要。预警系统应能够通过广播、电子显示屏等多种方式，及时向行车上游的驾驶员发布相关信息 <sup><font color="red">17<color></font></sup>。这使得驾驶员能够提前采取减速、规避等措施，从而减少交通事故的发生 <sup><font color="red">17<color></font></sup>。此类系统对于根据实时行车环境动态调整限速并提供预警具有决定性作用 <sup><font color="red">17<color></font></sup>。</p>
+
+<p>隧道固有的危险性，如烟雾的快速蔓延、事故的严重性以及有限的逃生路径，要求安全管理从被动响应向主动风险预测和预警转变。系统的价值不仅仅在于事件发生后发出警报，更在于通过早期干预来预防事故的发生或最小化其初始影响。隧道近似密闭空间的特性意味着一旦事故发生，其影响（烟雾、高温、拥堵、被困车辆）会迅速升级且难以控制。因此，隧道风险预警系统的首要目标必须是预防和早期干预，而非仅仅是事后响应。系统需要通过实时交通异常检测、环境变化监测等手段，预判风险并及时发出预警，从而最大程度地减少事故的初始影响，并有效避免二次事故的发生。这种转变推动了对先进传感技术、预测分析能力以及快速、自动化预警信息发布的需求，超越了简单的交通监控，迈向全面的风险评估。</p>
+
+<p><strong>表1：隧道与开放道路交通特性对比</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:left;">特性</th>
+  <th style="text-align:left;">开放道路</th>
+  <th style="text-align:left;">隧道</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left;">空间/环境</td>
+  <td style="text-align:left;">开放，通风良好</td>
+  <td style="text-align:left;">封闭/半封闭，通风受限，烟雾/热量易积聚 12</td>
+</tr>
+<tr>
+  <td style="text-align:left;">事故严重性</td>
+  <td style="text-align:left;">相对较低</td>
+  <td style="text-align:left;">伤害严重性更高 20</td>
+</tr>
+<tr>
+  <td style="text-align:left;">事故高发区域</td>
+  <td style="text-align:left;">分布广泛</td>
+  <td style="text-align:left;">接近段、入口段、转换段频率更高 20</td>
+</tr>
+<tr>
+  <td style="text-align:left;">能见度</td>
+  <td style="text-align:left;">通常良好，受天气影响</td>
+  <td style="text-align:left;">洞内外光照差异大（“黑洞/白洞效应”）17，烟雾影响 12</td>
+</tr>
+<tr>
+  <td style="text-align:left;">疏散与救援</td>
+  <td style="text-align:left;">相对容易，路径多样</td>
+  <td style="text-align:left;">疏散困难，避难空间有限，救援复杂 12</td>
+</tr>
+<tr>
+  <td style="text-align:left;">危险品运输风险</td>
+  <td style="text-align:left;">相对较低，易于疏散</td>
+  <td style="text-align:left;">火灾蔓延快，浓烟高温，扑救困难，对结构损害大 14</td>
+</tr>
+<tr>
+  <td style="text-align:left;">交通拥堵</td>
+  <td style="text-align:left;">原因多样，影响范围广</td>
+  <td style="text-align:left;">容量有限，易回堵，影响紧急响应 21</td>
+</tr>
+<tr>
+  <td style="text-align:left;">运营管理</td>
+  <td style="text-align:left;">相对独立</td>
+  <td style="text-align:left;">涉及多部门协调，管理责任需明确 14</td>
+</tr>
+</tbody>
+</table>
+
+<h2><strong><font color="DodgerBlue">II. 隧道特有风险分析</font></strong></h2>
+
+<h3><strong><font color="DarkViolet">2.1 交通事件风险</font></strong></h3>
+
+<p>隧道内常见的交通事故类型包括连环相撞和车辆侧滑 <sup><font color="red">22<color></font></sup>。这些事故的发生与多种因素紧密相关。驾驶员行为是主要原因之一，例如超速、超载、超宽、违章超车、爆胎以及与前车距离过近 <sup><font color="red">22<color></font></sup>。疲劳驾驶在重大事故中也扮演了重要角色 <sup><font color="red">23<color></font></sup>。此外，驾驶员操作不当，如进入隧道不减速、不开启车灯、随意变道超车等，也是事故频发的重要原因 <sup><font color="red">22<color></font></sup>。环境因素同样构成风险，例如进入隧道时因光线骤变产生的“黑洞”效应，可能导致驾驶员暂时性视力受损并失去对车辆的控制 <sup><font color="red">18<color></font></sup>。路面湿滑或结冰也是导致车辆失控的因素 <sup><font color="red">17<color></font></sup>。部分事故也与隧道设计缺陷有关，例如隧道口形成“断头路”的不良设计 <sup><font color="red">23<color></font></sup>。</p>
+
+<p>隧道内能见度差，极大地增加了二次事故的风险。如果初次事故未能及时清理或设置警示标志，后方来车因车速过快或注意力不集中，极易引发二次碰撞 <sup><font color="red">14<color></font></sup>。这些二次事故往往危害性更大，涉及更多车辆和人员，造成严重的交通堵塞，带来巨大的经济损失和人员伤亡 <sup><font color="red">14<color></font></sup>。此外，隧道因其容量有限、设计缺陷（如互通立交过多）以及外部因素（如施工、自然灾害或事故导致的封路）而极易发生严重拥堵 <sup><font color="red">21<color></font></sup>。拥堵不仅增加了通勤时间，还导致驾驶员压力增大、燃料浪费和空气污染，并严重阻碍紧急救援 <sup><font color="red">21<color></font></sup>。</p>
+
+<p>在隧道内运输危险品或易燃化学品时发生事故，其危害性尤为突出。火势蔓延迅速，难以控制，并产生大量高温有毒浓烟，难以疏散，严重阻碍救援工作，并对隧道结构造成巨大损害 <sup><font color="red">14<color></font></sup>。</p>
+
+<p>由驾驶员行为（如超速、疲劳驾驶、操作不当）以及“黑洞效应”导致的事故频发，揭示了人机界面存在的关键挑战。其根本问题在于，在隧道这种快速变化和受限的环境中，人类的感知和反应时间往往不足。因此，先进的预警系统不仅需要检测风险，还必须以直观、及时的方式将这些风险有效传达给驾驶员，甚至在未来通过智能车路协同来弥补或纠正人为失误。这种对人机交互的关注，意味着预警系统需要超越简单的视觉提示，采用更复杂、多模态（视觉、听觉、触觉）且情境感知的通信策略，以应对驾驶员的认知负荷和反应时间限制。最终，这可能推动车辆与基础设施之间的V2X通信、车载预警系统以及自适应控制系统的发展，从而更有效地引导或干预驾驶行为。</p>
+
+<h3><strong><font color="DarkViolet">2.2 火灾风险</font></strong></h3>
+
+<p>隧道火灾具有独特的危险特性。由于隧道内部空间狭小，近似密闭，火灾发生后火势蔓延迅速，且难以控制 <sup><font color="red">12<color></font></sup>。车辆本身携带的燃油以及可能运输的可燃物、化学品、危险品，都可能导致火势迅速扩大 <sup><font color="red">14<color></font></sup>。火灾产生的浓烟和热气不易散发，导致能见度极低，温度迅速升高，并因不完全燃烧产生大量有害气体和缺氧环境 <sup><font color="red">12<color></font></sup>。浓烟会遮蔽视频监控设备，使其无法发挥灾情监控功能 <sup><font color="red">12<color></font></sup>。高温使得灭火人员难以靠近火源，延长了灭火时间 <sup><font color="red">14<color></font></sup>。在双向交通隧道或特长隧道中，救援路线可能与烟气流动路线交叉，救援面和途径有限，极大地增加了扑救难度 <sup><font color="red">14<color></font></sup>。</p>
+
+<p>高温对隧道结构造成严重破坏。当衬砌混凝土中的水分受热汽化膨胀时，可能导致混凝土在短时间内爆裂、崩落（如200°C下10-15分钟内），严重损坏隧道主体结构，进一步增加人员避难逃生的困难 <sup><font color="red">12<color></font></sup>。隧道内部横断面狭窄，车辆前后紧密，火灾发生时人员和车辆疏散极其困难，即使设有车行联络隧道也难以有效疏散火点后方的车辆 <sup><font color="red">12<color></font></sup>。此外，隧道坡度对火灾烟气蔓延和温度分布有显著影响，可能形成“烟囱效应”加剧灾情 <sup><font color="red">16<color></font></sup>。</p>
+
+<p>隧道火灾不仅是事故，更具有迅速升级为灾难的独特潜力，导致严重的次生灾害（如毒烟、结构坍塌、救援受阻）。这表明火灾预警系统必须优先考虑超高速检测和自动化、集成化的响应机制（例如，通风系统启动、应急照明、交通管制），以防止初始事件演变为重大灾难。单纯的人工干预往往反应迟缓，难以应对这种快速变化的局面。隧道火灾的“灾难性升级潜力”意味着有效干预的时间窗口极其狭窄。因此，火灾预警系统必须具备极高的检测速度，并能触发自动化、预编程和集成化的缓解措施，例如激活特定的通风模式（纵向、横向或半横向）、部署消防系统以及实施实时交通封闭和疏散引导。系统的有效性将取决于其阻止火灾达到最大破坏潜力的能力。这要求高度可靠和冗余的火灾探测传感器（如线型光纤感温火灾探测器、红外火焰探测器）、智能化的通风和交通控制系统，以及预定义且可快速部署的应急场景。</p>
+
+<h3><strong><font color="DarkViolet">2.3 地质与结构风险</font></strong></h3>
+
+<p>隧道工程极易受到地质灾害的影响，尤其是在中国西南和西北等山区 <sup><font color="red">25<color></font></sup>。滑坡和崩塌是常见的自然灾害，它们可能摧毁农田、房屋和基础设施，造成巨大的经济损失和人员伤亡 <sup><font color="red">25<color></font></sup>。这些灾害可以直接威胁隧道洞口和隧道本体的安全，甚至堵塞河流，引发洪水和进一步的灾害链 <sup><font color="red">27<color></font></sup>。泥石流则具有突发、凶猛和迅速的特点，兼具崩塌、滑坡和洪水的破坏力，其危害程度往往更为广泛和严重 <sup><font color="red">25<color></font></sup>。泥石流可以掩埋基础设施、中断交通，甚至导致运行中的列车或汽车倾覆 <sup><font color="red">25<color></font></sup>。这些地质灾害的成因复杂，包括复杂的地质条件、气候变暖导致的极端强降雨、破坏性地震以及不科学的工程活动，这些因素都可能改变地表原有稳定状态，从而诱发新的地质灾害 <sup><font color="red">26<color></font></sup>。</p>
+
+<p>隧道衬砌结构在修建和运营过程中，由于设计施工不良、侵蚀环境影响、突发自然灾害和事故等原因，容易出现不同类型和程度的劣化和病害 <sup><font color="red">28<color></font></sup>。常见的损害包括衬砌劣化、剥落、错台和渗漏水 <sup><font color="red">28<color></font></sup>。隧道开挖会导致围岩应力调整和转移，伴随变形和破坏。围岩变形通常经历缓慢变形、急剧变形（易发生坍塌）、变形减缓和变形稳定四个阶段 <sup><font color="red">29<color></font></sup>。初期支护失效可能导致大范围坍塌 <sup><font color="red">29<color></font></sup>。</p>
+
+<p>渗漏水是隧道常见的病害，例如盾尾密封或铰接密封漏水漏砂，可能导致洞内泥浆堆积、密封失效、隧道被淹、地表沉降甚至坍塌 <sup><font color="red">30<color></font></sup>。排水系统堵塞会显著减少隧道排水量，增加结构外部水压力，并导致仰拱隆起 <sup><font color="red">31<color></font></sup>。地震对隧道造成的破坏也十分严重，包括隧道坍塌、衬砌开裂错位和轨道系统扭曲 <sup><font color="red">28<color></font></sup>。断层附近或跨断层区域的交通结构震害通常更为严重 <sup><font color="red">32<color></font></sup>。具体的震害表现包括线位错动、剥落掉块和挤压裂缝 <sup><font color="red">33<color></font></sup>。</p>
+
+<p>地质灾害（如滑坡、泥石流）通常是其他环境因素（如极端降雨、地震活动）的触发因素或次生效应。这些外部事件进而直接影响隧道的结构完整性（如变形、渗漏、坍塌）。这揭示了一个复杂的多因素因果链。因此，隧道风险预警系统必须整合多灾害监测（地质、水文、地震）与结构健康监测，以预测和预警级联故障，强调了建立全面环境和地质数据库的必要性。数据表明，地质灾害与更广泛的环境因素之间存在关键的相互关联性。例如，极端降雨可能增加滑坡风险，进而影响隧道稳定性或排水系统，导致渗漏水和进一步的结构应力。因此，一个强大的隧道风险预警系统必须超越对单一风险类型的孤立监测，转而进行多灾害融合分析，将环境数据与结构响应关联起来，以预测和预警级联故障。这种方法要求建立高度集成的数据平台、复杂的分析模型（如岩土、水文、结构模型），并可能利用预测性人工智能算法来识别模式并在故障变得临界之前进行预测。</p>
+
+<h3><strong><font color="DarkViolet">2.4 环境与运营风险</font></strong></h3>
+
+<p>隧道，特别是长隧道，容易受到空气质量问题的影响。这主要源于车辆排放物（如一氧化碳CO、氮氧化物NOx、PM2.5）以及地质构造中可能逸出的有害气体，例如瓦斯（甲烷CH4）34。通风不足会导致这些污染物积聚，对驾驶员健康构成威胁并降低能见度。除了“黑洞/白洞效应”外，隧道内普遍能见度可能因烟雾、灰尘、雾气或照明不足而降低，从而增加事故风险 <sup><font color="red">12<color></font></sup>。极端温度（例如寒冷地区的路面结冰 17）和高湿度会影响路面状况、设备性能以及驾驶员的舒适度和安全。</p>
+
+<p>运营管理方面的不足也构成了显著风险。隧道管理方主体安全责任不明确，可能导致对隧道通行环境、各类设备设施的养护、交通监控和消防设备完好性等环节管理不善 <sup><font color="red">14<color></font></sup>。在事故救援过程中，消防、机电、交管、监控等各部门之间缺乏有效协调，会严重阻碍救援工作的开展 <sup><font color="red">14<color></font></sup>。此外，事故发生后未能及时撤离现场或设置危险警告标志，极易引发二次事故 <sup><font color="red">14<color></font></sup>。</p>
+
+<p>尽管技术解决方案至关重要，但运营风险（如责任不清、维护不善、协调不足）揭示了仅靠技术无法完全解决的系统性脆弱性。这表明即使拥有先进的预警系统，人为和组织因素仍然是重要的薄弱环节。因此，一个全面的隧道风险预警系统必须与健全的运营管理规程、明确的问责框架以及定期的多机构应急演练相结合，以确保技术的有效利用和协调一致的人员响应。运营管理方面的不足代表了可能削弱最先进预警系统效益的“系统性盲点”或“瓶颈”。例如，火灾的快速检测如果救援团队协调不力或设备维护不善，将变得毫无意义。这表明“隧道风险预警系统”不仅应被视为一个技术产物，更应被视为一个社会技术系统，其中人工流程、培训、机构间协调和明确的问责制与传感器和算法同样重要。因此，报告必须强调需要集成培训计划、跨部门演练、明确的标准操作程序（SOP），以及对人工操作员和管理团队的绩效评估指标，与技术部署并行推进。</p>
+
+<p><strong>表2：隧道主要风险类型与特点</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:left;">风险类别</th>
+  <th style="text-align:left;">具体风险类型</th>
+  <th style="text-align:left;">隧道内特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left;"><strong>交通事件风险</strong></td>
+  <td style="text-align:left;">追尾、多车连撞、侧滑</td>
+  <td style="text-align:left;">驾驶员行为影响大，光线骤变效应，易发二次事故 18</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">交通拥堵</td>
+  <td style="text-align:left;">空间狭小，容量有限，影响紧急救援 21</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">危险品运输事故</td>
+  <td style="text-align:left;">火势蔓延快，浓烟高温，结构损害大 14</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><strong>火灾风险</strong></td>
+  <td style="text-align:left;">火势快速蔓延</td>
+  <td style="text-align:left;">密闭空间，易燃物多，难以控制 12</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">浓烟高温与有毒气体</td>
+  <td style="text-align:left;">烟雾积聚，能见度低，散热慢，威胁生命 12</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">结构破坏</td>
+  <td style="text-align:left;">高温导致混凝土剥落、崩塌 12</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">疏散与救援困难</td>
+  <td style="text-align:left;">空间狭窄，车辆堵塞，救援通道受阻 12</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><strong>地质与结构风险</strong></td>
+  <td style="text-align:left;">滑坡、崩塌、泥石流</td>
+  <td style="text-align:left;">威胁洞口及本体，可引发次生灾害链 25</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">围岩变形与失稳</td>
+  <td style="text-align:left;">应力调整，急剧变形阶段易坍塌 29</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">渗漏水</td>
+  <td style="text-align:left;">导致泥浆积聚、结构受损、地面沉降 30</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">地震破坏</td>
+  <td style="text-align:left;">衬砌开裂错位，结构坍塌，轨道扭曲 28</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><strong>环境与运营风险</strong></td>
+  <td style="text-align:left;">空气质量恶化</td>
+  <td style="text-align:left;">车辆排放及瓦斯逸出，影响健康与能见度 34</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">能见度降低</td>
+  <td style="text-align:left;">烟雾、灰尘、照明不足等 12</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">温度与湿度异常</td>
+  <td style="text-align:left;">影响路面状况、设备性能及驾驶安全 17</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">运营管理缺陷</td>
+  <td style="text-align:left;">责任不清，维护不善，部门协调不足 14</td>
+</tr>
+</tbody>
+</table>
+
+<h2><strong><font color="DodgerBlue">III. 隧道风险预警系统架构与功能</font></strong></h2>
+
+<h3><strong><font color="DarkViolet">3.1 系统目标与意义</font></strong></h3>
+
+<p>隧道风险预警系统的首要目标是减少交通事故及其严重程度，通过及时发布预警信息来实现 <sup><font color="red">17<color></font></sup>。系统旨在使驾驶员能够提前采取减速、规避等措施 <sup><font color="red">17<color></font></sup>。同时，它能够根据实时行车条件动态调整限速并提供预警 <sup><font color="red">17<color></font></sup>。最终，该系统致力于实现隧道的“全寿命周期安全运维” <sup><font color="red">10<color></font></sup>。</p>
+
+<p>该系统的意义在于显著提升隧道的行车安全性，特别是在出入口等关键区域 <sup><font color="red">17<color></font></sup>。它有助于改善交通流，减少拥堵，并最大程度地降低事故造成的经济损失和人员伤亡。此外，该系统支持智能交通的发展，推动交通运输向综合化、协作化和自动化方向迈进 <sup><font color="red">17<color></font></sup>。</p>
+
+<p>系统的目标超越了简单的“预警”，而是主动引导驾驶员行为，并可能在未来影响车辆的自主行动。这标志着从被动信息传播模式向主动干预、最终实现预测性和规范性安全管理系统的转变。其重要性不仅在于预防单一事故，更在于优化整个隧道运营的安全性和效率。系统的目标不仅仅是发出静态“警告”，而是提供智能、自适应的引导，主动塑造驾驶员行为（例如，动态限速、具体的避让指令），并长期与自动驾驶车辆直接交互。这代表着从“检测-警报”模式向“感知-预测-规定-控制”模式的转变。预警成为更广泛智能交通管理策略的一部分，旨在实现最佳和安全的隧道运营，而不仅仅是避免事故。这种未来愿景需要与V2X（车路协同）通信、用于预测建模的先进人工智能以及可能与联网车辆直接控制接口的无缝集成，从而实现真正的“智能隧道”环境。</p>
+
+<h3><strong><font color="DarkViolet">3.2 系统总体架构</font></strong></h3>
+
+<p>现代隧道风险预警系统普遍采用“端边云”分层架构，将分散的机电设备整合起来，实现全面的管理和控制 <sup><font color="red">39<color></font></sup>。</p>
+
+<p>在<strong>边缘层</strong>，主要负责本地数据采集和初步处理，包括各类传感器和本地控制单元。这确保了数据的实时性和初步响应能力。</p>
+
+<p>在<strong>云端层</strong>，则进行集中存储、高级处理、数据融合分析以及平台级预警 <sup><font color="red">39<color></font></sup>。这种分层设计使得系统既能快速响应本地事件，又能进行宏观分析和决策。</p>
+
+<p>一个统一的平台对于管理多样化的数据源和功能至关重要。该平台提供<strong>隧道概览</strong>，包括隧道分布、基础信息统计、运行状态和通行统计，从而全面掌握隧道整体情况 <sup><font color="red">39<color></font></sup>。</p>
+
+<p><strong>资产管控</strong>功能实现设备资产的集中管理、统一维护、状态数据管理和采集数据管理 <sup><font color="red">39<color></font></sup>。</p>
+
+<p><strong>智能监测</strong>模块能够实时监测交通、视频、事件、火灾、照明、环境、能耗和电力等运营动态，主动发现异常情况 <sup><font color="red">39<color></font></sup>。</p>
+
+<p><strong>智慧管控</strong>功能则支持“一键管控”，远程控制照明、交通设备、风机、卷帘门和电力，实现所有设备的联网联控 <sup><font color="red">39<color></font></sup>。在</p>
+
+<p><strong>应急处置</strong>方面，系统支持事件检测、上报、应急资源管理、应急处理和可视化调度，实现各类事件的协同处置 <sup><font color="red">39<color></font></sup>。</p>
+
+<p>系统的核心技术包括基于物联网平台，实现广泛的设备接入和远程控制 <sup><font color="red">39<color></font></sup>。通过一体化超融合设备，实现宽环境部署，集成了存储、计算、网络、安全和人工智能的全栈能力，部署简便，开箱即用，并支持远程自动运维 <sup><font color="red">40<color></font></sup>。此外，系统基于OpenHarmony操作系统和边缘物联网关，实现机电设备的统一接入、纳管、状态实时监控和统一业务操作，打破了系统壁垒 <sup><font color="red">40<color></font></sup>。</p>
+
+<p>采用“端边云”架构和集成平台，标志着系统从碎片化、孤立的系统（例如，独立的交通、消防、通风系统）向整体、统一的智能框架转变。这意味着系统旨在实现所有隧道子系统之间的互操作性和数据融合，从而能够进行更复杂的分析、协调响应，并最终形成隧道的“数字孪生”表示。这种架构的采用和统一平台的建立，预示着从管理单个、孤立的隧道子系统向创建统一、智能生态系统的根本性转变。这种架构促进了来自不同来源数据的无缝融合，从而能够进行跨领域分析（例如，将交通拥堵与空气质量关联起来，或将轻微结构异常与近期地震活动关联起来）。这种集成对于识别孤立系统可能遗漏的复杂、多因素风险至关重要，并能协调和优化所有隧道设施的响应。这种架构的演进是实现数字孪生和人工智能驱动的预测性维护等高级应用的前提，因为它为这些复杂功能提供了必要的数据骨干和计算能力。</p>
+
+<h3><strong><font color="DarkViolet">3.3 核心功能模块</font></strong></h3>
+
+<p>隧道风险预警系统的核心功能模块旨在全面感知环境信息并高效发布预警。</p>
+
+<p><strong>环境信息感知</strong>是系统的基础，能够全面感知影响隧道行车安全的各种因素，包括车流量、车速、路面状况（如结冰或积水）、光照强度和能见度 <sup><font color="red">17<color></font></sup>。这通过部署多种传感器实现，例如磁阻传感器、温湿度传感器和光照传感器，以采集多样化数据，而非仅仅依赖单一信息 <sup><font color="red">17<color></font></sup>。</p>
+
+<p><strong>车流量和车速检测</strong>采用磁阻传感器实现。通过探测车辆经过传感器附近时产生的磁场畸变，系统能够监测车辆的存在，并通过在50米范围内部署的多个传感器采集的信息，推导出车辆的速度和一段时间内的流量 <sup><font color="red">17<color></font></sup>。此外，人工智能视觉技术和激光雷达（LiDAR）也可用于实时图像处理、目标检测和跟踪（例如轨道上的异物），进一步提升检测精度 <sup><font color="red">41<color></font></sup>。</p>
+
+<p><strong>预警信息发布</strong>是系统的关键输出。系统能够根据实时环境状态，必要时生成预警信息，并通过广播、电子显示屏等多种形式向驾驶员发布 <sup><font color="red">17<color></font></sup>。预警信息来源于外部交通状态数据和气象数据，也包括系统内部生成的预警，例如隧道口车流量大、拥堵导致的追尾风险，洞口两侧光照强度差异大导致的“白洞/黑洞”效应，以及路面湿滑或结冰导致的车辆失控风险 <sup><font color="red">17<color></font></sup>。</p>
+
+<p><strong>用户接口和数据访问</strong>为管理人员提供了便捷的交互方式。系统通过管理服务端和网页提供用户接口，允许用户访问传感器实时采集的最新信息，并进行调控设置 <sup><font color="red">17<color></font></sup>。处理后的数据可以通过公安专用网接口传输到交通指挥中心，也可通过互联网提供系统用户接口 <sup><font color="red">17<color></font></sup>。</p>
+
+<p>对预警信息发布“多种形式”的强调（广播、显示屏、车载系统）以及利用“全面的环境信息”生成“更有指导意义的限速值及预警信息”，表明系统正朝着多模态和情境感知预警发布方向发展。这意味着系统不仅检测威胁，还会根据特定条件（如光照条件、交通密度、危险类型）和驾驶员当前状态，调整预警内容和传递方式，从而最大限度地提高有效性并减少信息过载。系统核心功能模块的设计旨在实现多模态和情境感知的预警发布。这意味着系统会根据具体的危险、环境条件（例如光线、能见度）、交通密度，甚至驾驶员可能存在的认知状态，调整预警的类型、内容和传递机制。例如，“黑洞效应”预警可能涉及特定的照明调整和视觉提示，而火灾预警则会触发响亮的音频警报和清晰的疏散指示。目标是确保预警不仅被发出，而且被驾驶员有效地接收并采取行动，减少模糊性并提高响应时间。这需要复杂的算法进行实时风险评估、动态内容生成和智能选择预警通道，并可能与车载系统集成以实现个性化警报。</p>
+
+<h2><strong><font color="DodgerBlue">IV. 关键技术与传感器应用</font></strong></h2>
+
+<h3><strong><font color="DarkViolet">4.1 交通流与事件检测技术</font></strong></h3>
+
+<p>隧道风险预警系统的有效性依赖于先进的交通流与事件检测技术。</p>
+
+<p><strong>磁阻传感器</strong>被用于检测车辆的存在，并通过分析磁场畸变来推断交通流量和车速 <sup><font color="red">17<color></font></sup>。这种方法实施简单、成本低廉，其关键在于对磁信号的模式识别算法 <sup><font color="red">17<color></font></sup>。</p>
+
+<p><strong>视频和热成像传感器</strong>，如FLIR交通传感器，是传统地感线圈检测器的高度可靠替代方案 <sup><font color="red">42<color></font></sup>。它们能够检测汽车、自行车和行人，从而实现交叉路口的智能控制和交通流优化 <sup><font color="red">42<color></font></sup>。热成像传感器通过探测热量而非光线工作，使其在极端照明条件（如刺眼阳光或潮湿路面反射的车前灯）下也能保持鲁棒性，从而减少误报和漏报，并提供更出色的信号时序 <sup><font color="red">42<color></font></sup>。在隧道内，这些传感器能够快速检测烟雾、抛洒物、行人和其他交通事件，有助于挽救生命并避免二次事故 <sup><font color="red">42<color></font></sup>。</p>
+
+<p><strong>激光雷达（LiDAR）技术</strong>提供了远距离检测能力，探测距离可达200米，具有99%的检测准确率和45°×25°的视场角 <sup><font color="red">41<color></font></sup>。它能够输出隧道入口的三维建模数据和图像数据，包括物体的大小、速度、方向和形状等信息 <sup><font color="red">41<color></font></sup>。激光雷达与摄像头结合，辅以上位机，通过5G无线通信或光纤通信与服务器交互，实现全面的隧道入口安全监控和预警服务 <sup><font color="red">41<color></font></sup>。</p>
+
+<p><strong>人工智能视觉技术</strong>利用深度神经网络算法，对视觉传感器采集的实时图像进行处理，智能识别轨道上的异物，并进行目标检测、边界回归和分类 <sup><font color="red">41<color></font></sup>。系统还能够智能识别铁轨，并采用卡尔曼滤波算法对障碍物的实时位置进行跟踪和补偿 <sup><font color="red">41<color></font></sup>。实时点云数据和图像数据可通过5G无线通信能力传输至云端服务器，进行平台级预警 <sup><font color="red">41<color></font></sup>。</p>
+
+<p>整合磁阻、热成像、激光雷达和人工智能视觉等多种传感技术，标志着系统正朝着多传感器融合的方向发展。这不仅仅是增加传感器数量，更是将它们互补的优势结合起来（例如，热成像适用于低能见度环境，激光雷达提供精确的三维数据，人工智能视觉擅长智能目标识别），从而在复杂的隧道环境中创建更稳健、准确和全面的实时态势感知能力，克服单一技术的局限性。多种不同传感器技术（磁阻、热成像、激光雷达、人工智能视觉）的部署，是实现多传感器数据融合的战略性举措。每种技术都有其固有的优势和劣势（例如，热成像在低光/烟雾条件下表现出色，但缺乏精确距离；激光雷达提供准确的三维数据，但可能受大雨/雾影响；人工智能视觉在目标识别方面强大，但需要清晰的视觉）。通过融合来自这些互补来源的数据，系统可以实现显著更高的准确性、鲁棒性和全面的态势感知能力，特别是在隧道这种动态且充满挑战的环境中，条件可能迅速变化（例如，突然的烟雾、眩光）。这种融合减轻了单个传感器的局限性，并为预警算法提供了更可靠的输入。这种趋势要求先进的数据处理能力，包括实时数据同步、校准和融合算法，通常利用人工智能/机器学习从组合数据流中提取有意义的信息。</p>
+
+<h3><strong><font color="DarkViolet">4.2 环境监测技术</font></strong></h3>
+
+<p>环境监测技术是隧道风险预警系统不可或缺的一部分，它确保了隧道内部环境的安全性与舒适性。</p>
+
+<p><strong>空气质量传感器</strong>用于监测隧道内有害气体，如一氧化碳（CO）、氮氧化物（NOx）、PM2.5、二氧化硫（SO）和臭氧（O3）的浓度 <sup><font color="red">35<color></font></sup>。系统能够根据空气质量传感器和CO传感器的输出数据，自动进入补充氧气、CO2吸收/PM2.5清除和/或空气净化模式 <sup><font color="red">35<color></font></sup>。有害气体报警模块具备浓度超标报警功能 <sup><font color="red">35<color></font></sup>。</p>
+
+<p><strong>能见度传感器</strong>对于评估隧道内部能见度状况和驾驶员安全至关重要，尤其是在烟雾、灰尘或照明不足的情况下。</p>
+
+<p><strong>温度和湿度传感器</strong>用于监测路面状况（例如结冰或积水风险）和隧道整体环境 <sup><font color="red">17<color></font></sup>。在寒冷地区，监测隧道内部温湿度以及围岩温度对于预防路面结冰和结构安全至关重要 <sup><font color="red">38<color></font></sup>。</p>
+
+<p><strong>风速和风向传感器</strong>对于通风系统的控制至关重要。它们测量隧道内特定点的风速，控制器根据风速检测值及其历史数据计算出的变化率来控制射流风机的启停，以实现节能通风和烟雾控制 <sup><font color="red">43<color></font></sup>。</p>
+
+<p>各种环境传感器（空气质量、温度、湿度、风速）的集成，实现了环境的动态自适应。这不仅仅是警报不良条件，更是积极管理隧道环境（例如，根据CO/NOx水平调整通风，根据能见度调整照明，预警结冰路面）。这种主动的环境控制直接有助于安全和运营效率，在风险显现为事故之前将其降低。对环境监测（空气质量、温度/湿度、风速）的全面覆盖，表明系统正朝着动态环境自适应方向发展。这意味着系统不仅仅是被动地报告环境条件；它正在积极地管理这些条件，以维持安全的运行参数。例如，高CO水平会触发通风增加，或低温会触发关于结冰路面的警告。这种对隧道内部环境的主动控制是风险缓解的关键组成部分，可以防止条件恶化到危险状态，并优化通风和照明的能源消耗。这需要复杂的控制算法，将实时环境数据与交通状况和能源效率目标相结合，从而实现隧道的“智能气候控制”系统。</p>
+
+<h3><strong><font color="DarkViolet">4.3 结构健康监测技术</font></strong></h3>
+
+<p>结构健康监测技术旨在持续监测隧道结构的完整性，及时发现劣化并预测潜在故障。</p>
+
+<p><strong>分布式光纤传感器</strong>被嵌入在二次衬砌混凝土内部或粘贴在结构物表面，用于获取初始应力场，实现隧道结构的在线、动态、实时健康监测 <sup><font color="red">45<color></font></sup>。这种技术能够提供连续的、高精度的结构状态数据。</p>
+
+<p><strong>位移和变形传感器</strong>对于监测围岩变形和结构位移至关重要 <sup><font color="red">29<color></font></sup>。监测内容包括地表水平位移、竖向位移以及净空收敛变形，特别是在高边仰坡或存在冲刷滑移风险的区域 <sup><font color="red">38<color></font></sup>。</p>
+
+<p><strong>渗流和水压传感器</strong>在岩溶隧道和富水隧道中必不可少，用于监测排水量和地下水压力等指标 <sup><font color="red">38<color></font></sup>。温度传感器也可以通过测量隧道壁温差来间接检测渗漏水 <sup><font color="red">46<color></font></sup>。</p>
+
+<p><strong>振动传感器</strong>虽然在提供的资料中未详细说明其在结构健康监测中的具体应用，但在全面的结构健康监测系统中，特别是在地震活跃区或交通量大的区域，振动监测通常是一个重要组成部分。</p>
+
+<p>结构健康监测系统的特点包括：应稳定可靠、经济实用、安全联网，并且便于维护和升级扩容 <sup><font color="red">38<color></font></sup>。系统应具备与外部系统互联互通、数据共享以及实时展示监测结果的功能 <sup><font color="red">38<color></font></sup>。在隧道施工期预埋的监测仪器和传感器，如果符合监测要求，应继续使用 <sup><font color="red">38<color></font></sup>。系统还应提供科学的预警判断、告警和响应机制，以最大程度地减少虚警或漏警 <sup><font color="red">47<color></font></sup>。</p>
+
+<p>对连续、实时结构健康监测（光纤、位移、渗漏）以及能够“综合评估和预测隧道结构长期性能”的能力的强调，表明系统正在从被动修复转向预测性维护和全生命周期管理。这意味着预警系统不仅用于应对即时安全威胁，还用于长期资产管理，优化维护计划，并延长隧道的运营寿命。持续、实时结构健康监测（光纤、位移、渗流）以及“综合评估和预测长期性能”的能力，表明系统正从被动修复转向预测性维护和全生命周期管理。这意味着预警不仅关乎迫在眉睫的坍塌，更关乎需要关注的劣化状况，以防止未来发生灾难性事件。这需要复杂的数据分析，包括用于异常检测和预测的机器学习模型，并与建筑信息模型（BIM）或数字孪生平台集成，以实现全面的实时结构健康概览。</p>
+
+<h3><strong><font color="DarkViolet">4.4 机器人巡检与智能运维</font></strong></h3>
+
+<p><strong>机器人巡检</strong>技术为地下隧道巡检提供了创新的解决方案，尤其适用于存在有毒有害气体等危险环境的隧道，有效降低了人工巡检的风险 <sup><font color="red">48<color></font></sup>。</p>
+
+<p>巡检机器人具备多项关键能力，包括在线平稳运动、无线数据传输（包括图像信息）、设备发热和有毒气体检测、越障功能以及防火、防水功能 <sup><font color="red">48<color></font></sup>。与人工巡检相比，机器人巡检显著提升了运维效率，增加了巡检频次，并提高了巡检质量，能够发现人类肉眼不易察觉的异常，例如细微的水渍、裂缝或温度异常 <sup><font color="red">48<color></font></sup>。例如，新加坡能源集团已成功部署机器狗（如SPock）进行自主隧道巡检，这些机器狗配备视频摄像头和热成像仪，能够识别缺陷并记录报告 <sup><font color="red">49<color></font></sup>。在紧急情况下，它们甚至可以作为第一响应者，在无需人员进入的情况下评估情况并提供实时更新 <sup><font color="red">50<color></font></sup>。</p>
+
+<p>**智能运营与维护（O\&amp;M）**是隧道建设和运营行业的发展趋势，正朝着“绿色低碳、智能高效”方向迈进，这得益于人工智能、云计算、大数据等新一代信息技术的深度赋能 <sup><font color="red">51<color></font></sup>。</p>
+
+<p>其主要驱动力包括：<strong>国家战略</strong>，智能建造是推动互联网、大数据、人工智能与实体经济深度融合的关键举措 <sup><font color="red">52<color></font></sup>。</p>
+
+<p><strong>技术进步</strong>，智能传感技术（高精度测量、高分辨率识别、高环境适应性）、5G、物联网和云计算的显著发展为智能运维奠定了基础 <sup><font color="red">52<color></font></sup>。</p>
+
+<p><strong>大数据</strong>，隧道工程大数据基础逐步形成，涵盖多源数据稳定采集传输、可靠存储、融合分析和多场景应用 <sup><font color="red">52<color></font></sup>。</p>
+
+<p><strong>机器人技术</strong>，巡检机器人及其他专用机器人的开发和应用，实现了危险或重复性任务的自动化，提高了效率和安全性 <sup><font color="red">10<color></font></sup>。</p>
+
+<p><strong>云计算</strong>，为海量数据处理和“隧道”大模型构建提供了良好的硬件基础 <sup><font color="red">52<color></font></sup>。</p>
+
+<p>未来的发展方向包括：实现基础设施与装备一体化、多种运输装备继承设计、运营调度与服务一体化等<strong>综合交通智能化协同与服务</strong> <sup><font color="red">17<color></font></sup>。通过无线通信、传感器和智能计算等技术，实现车与车、车与路信息交互和共享的</p>
+
+<p><strong>合作式智能交通和自动驾驶</strong> <sup><font color="red">17<color></font></sup>。在隧道全寿命周期内实现建造和运维的</p>
+
+<p><strong>机械化、信息化、自动化、少人化或无人化</strong> <sup><font color="red">10<color></font></sup>。此外，**数字孪生和BIM（建筑信息模型）**将用于实时监测、预测分析和智能维护规划 <sup><font color="red">52<color></font></sup>。</p>
+
+<p>巡检机器人日益普及，标志着隧道运营维护正朝着人机协作的战略方向发展。这不仅仅是自动化，更是利用机器人执行危险、重复性或超出人类感官能力的任务（例如，检测渗漏的细微温度异常）。这种协作通过将人类从危险环境中解放出来，提高效率，并增加检查的质量和频率，从而更早地发现潜在风险，增强了安全性。机器人巡检的兴起不仅仅是自动化人工任务；它代表着风险缓解方面人机协作的战略转变。机器人可以进入危险区域，以更高的一致性执行重复性任务，并利用先进传感器（例如热成像仪）检测人类检查员难以察觉的异常（例如指示渗漏的细微温度下降）。这意味着人类可以专注于更高层次的分析和决策，而机器人则从隧道最危险和难以接近的部分提供连续、高保真的数据。预警系统受益于更频繁、客观和详细的输入，提高了风险识别的准确性和及时性。这种趋势将推动更自主和智能的机器人、机器人传感器数据的高级分析以及用于有效协作和远程控制的新型人机界面设计，最终实现“无人化”或“少人化”的隧道运营。</p>
+
+<h3><strong><font color="DarkViolet">4.5 数字孪生与车路协同</font></strong></h3>
+
+<p>数字孪生技术在隧道风险预警系统中扮演着越来越重要的角色。<br />
+其核心概念是一个可视化应用系统，它将高精地图和三维模型相结合，对交通实景和事件信息进行数字重构，提供与真实场景时空基准一致的数字化映射 <sup><font color="red">54<color></font></sup>。<br />
+数字孪生系统具备多项关键功能：通过对接隧道视频系统和智能感知设备，实现对隧道内交通、车辆和环境状况的<strong>实时运行监测</strong> <sup><font color="red">53<color></font></sup>。它能够精准识别隧道交通事故、交通违章、火灾、隧道病害等事件，以及温湿度、风速、照明、烟雾等异常指标，并及时发布预警 <sup><font color="red">53<color></font></sup>。在</p>
+
+<p><strong>应急联动指挥</strong>方面，平台能够自动匹配预先设置的应急预案，并在人工审核确认事件类型和级别后，启动应急联动，实现设施设备“一键”联动控制，提升应急事件处置效率和通行安全 <sup><font color="red">53<color></font></sup>。此外，平台还支持</p>
+
+<p><strong>辅助决策分析</strong>，包括交通运行分析、历史事故分析、隧道环境分析和隧道安全风险判别，为制定合理限速值、事故预防策略、风机/照明动态工作以及应急救援预案等提供决策支撑 <sup><font color="red">53<color></font></sup>。在</p>
+
+<p><strong>智能养护管理</strong>方面，系统实现对隧道内所有机电设施和智能感知设备的可视化管控，实时监测设备运行状态，并进行节能管控和智能巡检养护，对路面异物、墙壁渗漏水等异常情况进行检测预警，并预测隧道病害趋势 <sup><font color="red">53<color></font></sup>。</p>
+
+<p>车路协同（V2X）技术是实现隧道智能化安全管理的关键。<br />
+其概念是将无线通信、传感器和智能计算等技术综合应用于车辆和道路基础设施，通过车与车（V2V）、车与路（V2I）之间的信息交互和共享，实现交通系统的整体优化 <sup><font color="red">17<color></font></sup>。<br />
+车路协同的发展需求在于支撑自动驾驶从单车智能向协同感知、协同决策和协同控制的技术路径发展 <sup><font color="red">55<color></font></sup>。它还需要兼顾更广泛的用户需求，包括智能网联车辆和现有普通车辆 <sup><font color="red">55<color></font></sup>。车路协同系统通常由交通参与者通过直连无线通信或5G通信与路侧子系统、云端子系统相连，路侧子系统再通过光纤有线通信或5G通信与中心子系统相连 <sup><font color="red">55<color></font></sup>。</p>
+
+<p>在隧道中的应用方面，车路协同系统可以为个体智能车辆提供重点区域交通参与者信息、建议路径和车速引导等辅助决策服务 <sup><font color="red">55<color></font></sup>。在无GNSS信号或弱GNSS信号的隧道等区域，通过加设路侧单元（RSU）设施，确保V2X设备间的正常通信 <sup><font color="red">55<color></font></sup>。它还可用于危险场景预警、连续信号灯下的绿波通行、路侧智能感知、高精度地图下载和5G视频直播等 <sup><font color="red">56<color></font></sup>。长安汽车和景驰科技的自动驾驶车辆已成功穿越隧道，展示了车路协同在该场景下的应用潜力 <sup><font color="red">56<color></font></sup>。</p>
+
+<p>数字孪生和车路协同技术融合，代表了主动安全管理的最高水平。数字孪生创建了用于预测分析和场景模拟的虚拟副本，而车路协同则实现了基础设施与车辆之间的实时协作智能。这种协同作用使系统能够从检测风险转变为高精度预测风险，并通过智能引导和自动化控制协同预防风险，最终目标是实现“零事故”环境。数字孪生和车路协同（V2X）技术的融合，代表了主动安全的顶峰。数字孪生提供了隧道的高保真、实时虚拟表示，从而能够进行复杂的预测建模、场景模拟（例如，火灾如何蔓延，拥堵如何形成）和全面的风险评估。V2X则充当“行动层”，实现了智能隧道基础设施（由数字孪生提供信息）与单个车辆之间的实时直接通信。这使得高度精细、个性化和主动的安全干预成为可能，例如根据数字孪生预测的风险，对联网/自动驾驶车辆进行动态速度调整、车道引导，甚至是自动制动/转向指令。这超越了单纯的“警告”，转变为“协同预防”事件。这种融合预示着隧道将成为自我感知、自我优化并积极参与驾驶任务的实体，从根本上将隧道安全管理从以人为中心、被动响应的模式转变为智能、主动和协作的系统，为在受限环境中实现完全自动驾驶铺平道路。</p>
+
+<p><strong>表3：隧道风险预警系统关键传感器与监测内容</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:left;">传感器类别</th>
+  <th style="text-align:left;">特定传感器类型</th>
+  <th style="text-align:left;">监测内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left;"><strong>交通流与事件</strong></td>
+  <td style="text-align:left;">磁阻传感器</td>
+  <td style="text-align:left;">车辆存在、车速、流量、拥堵 17</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">视频摄像头（可见光）</td>
+  <td style="text-align:left;">交通流、事件（事故、违章、抛洒物、行人）42</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">热成像摄像头</td>
+  <td style="text-align:left;">烟雾、抛洒物、行人、设备异常发热、渗漏水温度异常 42</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">激光雷达（LiDAR）</td>
+  <td style="text-align:left;">障碍物大小、速度、方向、形状，三维建模数据 41</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">人工智能视觉</td>
+  <td style="text-align:left;">轨道异物、目标检测、分类、跟踪 41</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><strong>环境监测</strong></td>
+  <td style="text-align:left;">CO/NOx/PM2.5传感器</td>
+  <td style="text-align:left;">有害气体浓度、空气质量 34</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">能见度传感器</td>
+  <td style="text-align:left;">隧道内部能见度 17</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">温湿度传感器</td>
+  <td style="text-align:left;">路面状况（结冰/积水），隧道内部温湿度，围岩温度 17</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">风速风向传感器</td>
+  <td style="text-align:left;">风速、风向，用于通风系统控制 43</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><strong>结构健康</strong></td>
+  <td style="text-align:left;">分布式光纤传感器</td>
+  <td style="text-align:left;">结构应力场、变形、裂缝 38</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">位移/变形传感器</td>
+  <td style="text-align:left;">围岩变形、结构位移、收敛变形 29</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">渗流/水压传感器</td>
+  <td style="text-align:left;">排水量、地下水压力、渗漏水位置 31</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><strong>机器人巡检</strong></td>
+  <td style="text-align:left;">巡检机器人（含视频、热成像）</td>
+  <td style="text-align:left;">设备运行状况、潜在安全隐患（发热、毒气），水渍、裂缝 48</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><strong>高级集成</strong></td>
+  <td style="text-align:left;">数字孪生平台</td>
+  <td style="text-align:left;">实时隧道数字映射，交通、车辆、环境、病害监测，应急联动，辅助决策，智能养护 53</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">车路协同（V2X）模块</td>
+  <td style="text-align:left;">车辆与基础设施信息交互，协同感知、决策、控制 17</td>
+</tr>
+</tbody>
+</table>
+
+<h2><strong><font color="DodgerBlue">V. 隧道风险预警系统建设与运营管理</font></strong></h2>
+
+<h3><strong><font color="DarkViolet">5.1 相关设计与运营规范</font></strong></h3>
+
+<p>中国已建立一套全面的国家和行业标准体系，用于指导隧道的设计和运营，并根据隧道类型进行分类。</p>
+
+<p><strong>公路隧道</strong>方面，主要依据《公路隧道设计细则》（JTG/T D70-2010）、《公路隧道施工技术规范》（JTG/T3660-2020）以及《公路隧道运营技术规范》等 <sup><font color="red">1<color></font></sup>。这些规范涵盖了抗震设计、通用设计原则、施工方法（如钻爆法、盾构法、沉管法）、结构类型（如复合式衬砌、喷锚支护）以及运营环境、交通和安全设施要求 <sup><font color="red">1<color></font></sup>。此外，还有针对照明（JTG/T D70/2-01-2014）和通风（JTG/T D70/2-02-2014）的专门细则 <sup><font color="red">19<color></font></sup>。</p>
+
+<p><strong>铁路隧道</strong>的设计遵循《铁路隧道设计规范》（TB 10003-2016），该规范强调以人为本、服务运输、技术先进、经济耐久和便于养护维修的设计理念 <sup><font color="red">3<color></font></sup>。整体安全管理则由《铁路安全管理条例》规范，涉及施工安全、保护区设置等 <sup><font color="red">61<color></font></sup>。</p>
+
+<p><strong>城市隧道</strong>的设计和运营则参考《城市道路工程设计规范》（CJJ37-2012）以及城市隧道景观设计和运营安全管理的相关指导文件 <sup><font color="red">6<color></font></sup>。这些规范涵盖了照明、声环境、空气环境、防火、疏散通道、通风排烟和火灾探测等多个方面 <sup><font color="red">6<color></font></sup>。</p>
+
+<p>在<strong>结构健康监测</strong>方面，相关指南明确了监测内容、方法、传感器要求（如可靠性、稳定性、耐久性和使用寿命）以及系统特点（如稳定性、可靠性和互操作性）38。</p>
+
+<p>尽管存在广泛的国家标准，但人工智能、物联网、数字孪生和机器人等技术的快速发展，可能导致“监管滞后”。这意味着需要持续、敏捷地更新标准，以将新的智能技术和运营模式（如预测性维护、车路协同集成）纳入官方指导方针，确保预警系统始终处于安全和效率的前沿。现有全面监管框架与智能技术快速发展并存，表明可能存在“监管演进滞后”。虽然现有标准确保了基本安全和质量，但它们可能未能完全涵盖或强制要求人工智能驱动的预测分析、多传感器融合、机器人巡检或数字孪生应用等最新进展。这意味着为了使隧道风险预警系统真正利用尖端能力，需要持续且紧迫地进行敏捷标准开发和更新。这些更新不仅应整合新技术，还应重新定义操作最佳实践，以应对智能系统引入的能力和复杂性。这要求研究机构、行业和监管机构之间更紧密的合作，以确保标准与技术进步同步发展，从而促进下一代隧道安全系统的安全有效部署。</p>
+
+<p><strong>表4：中国隧道相关设计与运营规范</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:left;">隧道类型</th>
+  <th style="text-align:left;">标准类别</th>
+  <th style="text-align:left;">标准名称/代码</th>
+  <th style="text-align:left;">关键关注点/范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left;"><strong>公路隧道</strong></td>
+  <td style="text-align:left;">设计</td>
+  <td style="text-align:left;">《公路隧道设计细则》（JTG/T D70-2010）</td>
+  <td style="text-align:left;">抗震设计、通用设计原则、结构类型、平纵线位 1</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">施工</td>
+  <td style="text-align:left;">《公路隧道施工技术规范》（JTG/T3660-2020）</td>
+  <td style="text-align:left;">施工安全、环保、质量保证措施 58</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">运营与维护</td>
+  <td style="text-align:left;">《公路隧道运营技术规范》</td>
+  <td style="text-align:left;">运营环境、交通管理、安全设施、应急预案 59</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">专用设施</td>
+  <td style="text-align:left;">《公路隧道照明设计细则》（JTG/T D70/2-01-2014）</td>
+  <td style="text-align:left;">照明亮度、均匀度、眩光、诱导性 19</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">《公路隧道通风设计细则》（JTG/T D70/2-02-2014）</td>
+  <td style="text-align:left;">通风方式、风速、空气质量 19</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><strong>铁路隧道</strong></td>
+  <td style="text-align:left;">设计</td>
+  <td style="text-align:left;">《铁路隧道设计规范》（TB 10003-2016）</td>
+  <td style="text-align:left;">人本、服务运输、技术先进、经济耐久 3</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">运营与安全</td>
+  <td style="text-align:left;">《铁路安全管理条例》</td>
+  <td style="text-align:left;">铁路安全管理、施工安全、保护区 61</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><strong>城市隧道</strong></td>
+  <td style="text-align:left;">设计</td>
+  <td style="text-align:left;">《城市道路工程设计规范》（CJJ37-2012）</td>
+  <td style="text-align:left;">交通功能、设计速度、建筑限界、防灾标准 7</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">景观与设施</td>
+  <td style="text-align:left;">《城市隧道景观设计规范》</td>
+  <td style="text-align:left;">光环境、声环境、空气环境、防火、疏散 6</td>
+</tr>
+<tr>
+  <td style="text-align:left;"></td>
+  <td style="text-align:left;">运营与安全</td>
+  <td style="text-align:left;">《城市轨道交通运营安全风险分级管控和隐患排查治理管理办法》</td>
+  <td style="text-align:left;">设施监测养护、设备运行维修、行车组织、客运组织、运行环境风险 63</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><strong>通用</strong></td>
+  <td style="text-align:left;">结构健康监测</td>
+  <td style="text-align:left;">《隧道结构监测技术指南》</td>
+  <td style="text-align:left;">监测内容、方法、传感器要求、系统功能 38</td>
+</tr>
+</tbody>
+</table>
+
+<h3><strong><font color="DarkViolet">5.2 应急预案与演练</font></strong></h3>
+
+<p>隧道运营管理企业必须根据管辖公路隧道突发事件的类型和特点，制定详细的应急演练计划 <sup><font color="red">59<color></font></sup>。定期组织开展应急演练，包括实战演练和桌面演练等多种形式，以确保人员广泛参与、处置联动性强、形式多样且高效节约 <sup><font color="red">59<color></font></sup>。应急演练的频率应根据公路等级和隧道长度确定 <sup><font color="red">59<color></font></sup>。</p>
+
+<p>在事故工况下，应立即采取多项关键行动：利用沿线可变情报板、可变限速标志、广播、声光警报器、栏杆和车道指示器等设施，或通过现场人员指挥，禁止车辆进入发生火灾的隧道及对向隧道 <sup><font color="red">59<color></font></sup>。同时，引导火灾点下游车辆快速有序地驶离隧道，并禁止已进入隧道但处于火灾点上游的车辆继续前进 <sup><font color="red">59<color></font></sup>。组织隧道内司乘人员迅速逃离危险区域也是当务之急 <sup><font color="red">59<color></font></sup>。若火灾发生区域的照明设施尚未接触火源，应开启该区域的全部照明 <sup><font color="red">59<color></font></sup>。此外，应将监控图像切换至相应位置，确认火灾情况，并对从事故发生到处理完毕的全过程进行录像 <sup><font color="red">59<color></font></sup>。</p>
+
+<p>应急预案和演练虽然是强制性的，但隧道事故的日益复杂性（特别是火灾的快速蔓延）和现代预警系统（实时监控、数字孪生）的能力，表明需要从静态的、预定义计划转向动态的、人工智能辅助的应急响应。这意味着预警系统不仅应触发警报，还应根据不断演变的事件场景，实时主动建议甚至自动化最佳响应策略（例如，通风调整、交通改道、资源分配）。应急响应的演变正从僵硬的预定义计划转向动态、人工智能辅助和自适应的响应策略。虽然演练对于人员熟练度至关重要，但隧道事故（特别是火灾）的极快速度和复杂性要求实时优化。预警系统与数字孪生集成，应能够不仅“匹配预设计划”，而且根据实时事件参数（火灾规模、烟雾移动、交通密度）“模拟并推荐”最有效的行动方案（例如，优化通风风机操作以控制烟雾，精确的交通分流，资源部署）。这从“基于计划”的响应转向“情景自适应”响应。这需要数字孪生内部的先进模拟能力、能够评估多种响应场景的人工智能驱动决策支持系统，以及能够以最少人工干预执行这些优化策略的自动化控制接口，从而有效地充当“智能事件指挥官”。</p>
+
+<h3><strong><font color="DarkViolet">5.3 智能运维与发展趋势</font></strong></h3>
+
+<p>隧道建设和运营行业正迅速朝着自动化、数字化和智能化方向发展，这主要得益于人工智能、云计算和大数据等新一代信息技术的驱动 <sup><font color="red">10<color></font></sup>。</p>
+
+<p>这一趋势的关键驱动因素包括：<strong>国家战略</strong>，智能建造是中国推动互联网、大数据和人工智能与实体经济深度融合的关键举措 <sup><font color="red">52<color></font></sup>。</p>
+
+<p><strong>技术进步</strong>，智能传感（高精度、高分辨率、环境适应性）、5G、物联网和云计算的显著进步为智能运维提供了坚实基础 <sup><font color="red">52<color></font></sup>。</p>
+
+<p><strong>大数据</strong>，隧道工程大数据基础正在形成，涵盖多源数据采集、存储、融合分析和多场景应用 <sup><font color="red">52<color></font></sup>。</p>
+
+<p><strong>机器人技术</strong>，巡检机器人和其他专用机器人的开发和部署，实现了危险或重复性任务的自动化，提高了效率和安全性 <sup><font color="red">10<color></font></sup>。</p>
+
+<p>未来的发展方向包括：实现基础设施与装备一体化、多种运输装备继承设计、运营调度与服务一体化等<strong>综合交通智能化协同与服务</strong> <sup><font color="red">17<color></font></sup>。通过无线通信、传感器和智能计算等技术，实现车与车、车与路信息交互和共享的</p>
+
+<p><strong>合作式智能交通和自动驾驶</strong> <sup><font color="red">17<color></font></sup>。在隧道全寿命周期内实现建造和运维的</p>
+
+<p><strong>机械化、信息化、自动化、少人化或无人化</strong> <sup><font color="red">10<color></font></sup>。此外，**数字孪生和BIM（建筑信息模型）**将用于实时监测、预测分析和智能维护规划 <sup><font color="red">52<color></font></sup>。</p>
+
+<p>“智能运维”的总体趋势表明，维护模式正从被动响应、故障修复转变为预测性、自我优化的系统。这意味着隧道风险预警系统将演变为全面的智能管理平台，不仅警告即时危险，还会持续分析运营数据以预测设备故障，优化能源消耗（例如，通风、照明），并自主调整隧道参数以实现最佳安全和效率，从而迈向能够自我管理的“智能隧道”。智能运维的普遍趋势代表着从被动、人工密集的维护模式向预测性、自我优化系统的范式转变。这意味着隧道风险预警系统将与更广泛的运营维护平台融合，超越简单的危险警报。它将持续分析海量数据（来自传感器、交通、环境、结构健康），以预测潜在的设备故障（例如，通风系统、照明），优化运行参数（例如，通风的能源消耗、动态照明调整），甚至自主调整隧道设置，以防止风险或提高效率。这里的“预警”被整合到一个持续的反馈循环中，旨在使隧道始终保持在最佳、安全运行状态。这种未来需要强大的人工智能模型进行异常检测和预测，用于自主运行的先进控制系统，以及高度弹性且安全的IT/OT（信息技术/运营技术）基础设施，以支持复杂的数据流和决策过程。</p>
+
+<h2><strong><font color="DodgerBlue">VI. 结论与展望</font></strong></h2>
+
+<h3><strong><font color="DarkViolet">6.1 结论</font></strong></h3>
+
+<p>隧道与开放道路相比，具有独特的、被放大的安全挑战，因此需要专门且全面的风险预警系统。这些系统必须能够应对多方面的风险，包括复杂的交通事件、迅速升级的火灾、固有的地质和结构脆弱性，以及动态的环境和运营因素。隧道风险预警系统的发展特点是向多传感器融合、人工智能驱动的分析、预测能力以及集成平台（如端边云架构、数字孪生）的转变。机器人技术和车路协同正在成为提高巡检效率、保障人员安全和实现协作式风险预防的关键组成部分。同时，遵守并持续更新国家设计和运营标准，是确保这些先进系统安全性和可靠性的根本保障。</p>
+
+<h3><strong><font color="DarkViolet">6.2 展望</font></strong></h3>
+
+<p>未来，隧道风险预警系统将朝着更深层次的集成和智能化方向发展。人工智能、物联网和大数据技术将更广泛地应用于所有隧道子系统，从而实现更自主和自我优化的运营。增强的预测建模能力将使系统能够更准确地预判风险，从单纯的预警转向提供具有指导性的预防措施。</p>
+
+<p>人机协作的角色将进一步演变，人类操作员将从直接控制转向监督和战略决策，由智能系统和机器人辅助完成具体任务。系统将变得更具韧性，能够应对不可预见的事件，并更具适应性，能够灵活应对不断变化的环境条件和交通需求。随着系统互联互通和智能化程度的提高，网络安全将成为设计和运营中日益关键的方面，以防止恶意攻击或系统被破坏。</p>
+
+<p>此外，持续的标准化工作将是必要的，以确保规范与技术进步同步，从而促进尖端解决方案的安全有效部署。中国在隧道建设和智能运维方面的丰富经验和快速发展，使其在开发下一代隧道风险预警系统方面处于领先地位，为全球应用提供了宝贵的经验和借鉴。</p>
+
+<h4><strong><font color="LightSeaGreen">引用的资料</font></strong></h4>
+
+<ol>
+<li>JTG/T D70-2010 - 甘肃省交通工程建设监理有限公司, 访问时间为 六月 23, 2025， <a href="http://api.cms.gsjtjl.com/books/1618733670265.pdf">http://api.cms.gsjtjl.com/books/1618733670265.pdf</a>  </li>
+<li>公路隧道抗震设计规范 - 中华人民共和国交通运输部, 访问时间为 六月 23, 2025， <a href="https://xxgk.mot.gov.cn/2020/jigou/glj/202006/P020200623699371979434.pdf">https://xxgk.mot.gov.cn/2020/jigou/glj/202006/P020200623699371979434.pdf</a>  </li>
+<li>国家铁路局发布《铁路隧道设计规范》 - 中国政府网, 访问时间为 六月 23, 2025， <a href="https://www.gov.cn/xinwen/2016-11/23/content_5136338.htm">https://www.gov.cn/xinwen/2016-11/23/content_5136338.htm</a>  </li>
+<li>《铁路隧道设计规范》（TB10003-2016）【全文附高清无水印PDF+DOC/Word版下载】, 访问时间为 六月 23, 2025， <a href="https://www.waizi.org.cn/bz/154535.html">https://www.waizi.org.cn/bz/154535.html</a>  </li>
+<li>国家铁路局关于发布〈铁路隧道设计规范〉等2项工程建设标准英文译本的公告, 访问时间为 六月 23, 2025， <a href="https://www.waizi.org.cn/doc/23631.html">https://www.waizi.org.cn/doc/23631.html</a>  </li>
+<li>城市桥梁隧道景观设计技术标准（征求意见稿） - 福建省住房和城乡建设厅, 访问时间为 六月 23, 2025， <a href="https://zjt.fujian.gov.cn/itp/interface/download/download.action?appFile=AD2020112716095124.pdf">https://zjt.fujian.gov.cn/itp/interface/download/download.action?appFile=AD2020112716095124.pdf</a>  </li>
+<li>城市道路工程设计规范 - 北京市交通委员会, 访问时间为 六月 23, 2025， <a href="http://jtw.beijing.gov.cn/csdlyh/zlybz/202111/P020211109557720142032.pdf">http://jtw.beijing.gov.cn/csdlyh/zlybz/202111/P020211109557720142032.pdf</a>  </li>
+<li>城市道路隧道消防设计标准 - 深圳市住房和建设局, 访问时间为 六月 23, 2025， <a href="http://zjj.sz.gov.cn/attachment/1/1442/1442386/11212338.pdf">http://zjj.sz.gov.cn/attachment/1/1442/1442386/11212338.pdf</a>  </li>
+<li>城市道路工程设计规范CJJ 37-2012（2016年版） - 白银区人民政府, 访问时间为 六月 23, 2025， <a href="https://www.baiyinqu.gov.cn/XZJDBMDW/bmdw/szgcglc/fdzdgknr/lzyj/zcfg/art/2024/art_7d91e0ba44df49c9a6b22372574249e0.html">https://www.baiyinqu.gov.cn/XZJDBMDW/bmdw/szgcglc/fdzdgknr/lzyj/zcfg/art/2024/art_7d91e0ba44df49c9a6b22372574249e0.html</a>  </li>
+<li>中国隧道建设面临的若干挑战与技术突破 - 中国公路学报, 访问时间为 六月 23, 2025， <a href="https://zgglxb.chd.edu.cn/CN/10.19721/j.cnki.1001-7372.2020.12.001">https://zgglxb.chd.edu.cn/CN/10.19721/j.cnki.1001-7372.2020.12.001</a>  </li>
+<li>建成铁路隧道和公路隧道超五万公里中国隧道穿山越海, 访问时间为 六月 23, 2025， <a href="http://www.sasac.gov.cn/n2588025/n2588119/c31180650/content.html">http://www.sasac.gov.cn/n2588025/n2588119/c31180650/content.html</a>  </li>
+<li>北宜高速公路隧道火災避難模擬分析之研究 - 臺灣警察專科學校, 访问时间为 六月 23, 2025， <a href="https://educate.tpa.edu.tw/var/file/4/1004/img/390/710998044.pdf">https://educate.tpa.edu.tw/var/file/4/1004/img/390/710998044.pdf</a>  </li>
+<li>雪山隧道通車後火燒車事件及籲請注意事項 - 交通部高速公路局, 访问时间为 六月 23, 2025， <a href="https://www.freeway.gov.tw/Publish.aspx?cnid=610&p=1152">https://www.freeway.gov.tw/Publish.aspx?cnid=610\&amp;p=1152</a>  </li>
+<li>行业标准《公路隧道运营企业安全生产标准化基本规范》 - 交通运输部, 访问时间为 六月 23, 2025， <a href="https://www.mot.gov.cn/yijianzhengji/201610/P020161019373537389493.pdf">https://www.mot.gov.cn/yijianzhengji/201610/P020161019373537389493.pdf</a>  </li>
+<li>隧道火灾烟气温度及蔓延速度衰减特性-【维普期刊官网】, 访问时间为 六月 23, 2025， <a href="https://lib.cqvip.com/Qikan/Article/Detail?id=7109275163">https://lib.cqvip.com/Qikan/Article/Detail?id=7109275163</a>  </li>
+<li>坡度对特长公路隧道火灾烟气蔓延特性影响研究-学位, 访问时间为 六月 23, 2025， <a href="https://d.wanfangdata.com.cn/thesis/Y1916512">https://d.wanfangdata.com.cn/thesis/Y1916512</a>  </li>
+<li>高速公路隧道口环境感知与预警系统-教务处 - 长沙理工大学, 访问时间为 六月 23, 2025， <a href="https://www.csust.edu.cn/jwc/info/1083/1165.htm">https://www.csust.edu.cn/jwc/info/1083/1165.htm</a>  </li>
+<li>隧道里的这些紧急避险知识一定要知道！ - 绍兴市公安局, 访问时间为 六月 23, 2025， <a href="https://ga.sx.gov.cn/art/2017/4/27/art_1488125_17797532.html">https://ga.sx.gov.cn/art/2017/4/27/art_1488125_17797532.html</a>  </li>
+<li>公路隧道照明设计细则 - 政府信息公开, 访问时间为 六月 23, 2025， <a href="https://xxgk.mot.gov.cn/jigou/glj/202006/P020240611527382429645.pdf">https://xxgk.mot.gov.cn/jigou/glj/202006/P020240611527382429645.pdf</a>  </li>
+<li>山区高速公路隧道路段与开放路段的事故影响因素分析 - 交通信息与安全, 访问时间为 六月 23, 2025， <a href="http://www.jtxa.net/cn/article/doi/10.3963/j.jssn.1674-4861.2022.03.002">http://www.jtxa.net/cn/article/doi/10.3963/j.jssn.1674-4861.2022.03.002</a>  </li>
+<li>交通堵塞- 维基百科，自由的百科全书, 访问时间为 六月 23, 2025， <a href="https://zh.wikipedia.org/zh-cn/%E4%BA%A4%E9%80%9A%E5%A0%B5%E5%A1%9E">https://zh.wikipedia.org/zh-cn/%E4%BA%A4%E9%80%9A%E5%A0%B5%E5%A1%9E</a>  </li>
+<li>穿越“黑洞”——牛岭界隧道事故频发调查 - 梧州零距离, 访问时间为 六月 23, 2025， <a href="http://www.wzljl.cn/node_5661.htm">http://www.wzljl.cn/node_5661.htm</a>  </li>
+<li>“8·10”西汉高速陕西段重大事故 - 维基百科, 访问时间为 六月 23, 2025， <a href="https://zh.wikipedia.org/zh-cn/%E2%80%9C8%C2%B710%E2%80%9D%E8%A5%BF%E6%B1%89%E9%AB%98%E9%80%9F%E9%99%95%E8%A5%BF%E6%AE%B5%E9%87%8D%E5%A4%A7%E4%BA%8B%E6%95%85">https://zh.wikipedia.org/zh-cn/%E2%80%9C8%C2%B710%E2%80%9D%E8%A5%BF%E6%B1%89%E9%AB%98%E9%80%9F%E9%99%95%E8%A5%BF%E6%AE%B5%E9%87%8D%E5%A4%A7%E4%BA%8B%E6%95%85</a>  </li>
+<li>高速隧道车祸频发驾驶员需要掌握一些技巧, 访问时间为 六月 23, 2025， <a href="https://jtgl.beijing.gov.cn/jgj/94220/aqcs/134666/index.html">https://jtgl.beijing.gov.cn/jgj/94220/aqcs/134666/index.html</a>  </li>
+<li>地质灾害防治知识 - 攀枝花市自然资源和规划局, 访问时间为 六月 23, 2025， <a href="http://zgj.panzhihua.gov.cn/ztzl/kxpj/1077683.shtml">http://zgj.panzhihua.gov.cn/ztzl/kxpj/1077683.shtml</a>  </li>
+<li>我国地质灾害隐患识别精度如何？防灾减灾效果如何？| 中国网《中国访谈》 - 甘肃省人民政府, 访问时间为 六月 23, 2025， <a href="http://zrzy.gansu.gov.cn/zrzy/c051103/202412/174043182.shtml">http://zrzy.gansu.gov.cn/zrzy/c051103/202412/174043182.shtml</a>  </li>
+<li>川藏交通廊道滑坡崩塌灾害对道路工程的危害方式分析 - 工程地质学报, 访问时间为 六月 23, 2025， <a href="http://www.gcdz.org/article/id/12541">http://www.gcdz.org/article/id/12541</a>  </li>
+<li>水下隧道衬砌结构服役安全及其保障对策思考, 访问时间为 六月 23, 2025， <a href="https://www.engineering.org.cn/sscae/CN/10.15302/J-SSCAE-2017.06.007">https://www.engineering.org.cn/sscae/CN/10.15302/J-SSCAE-2017.06.007</a>  </li>
+<li>隧道及地下工程的基本问题及其研究进展1) - 力学学报, 访问时间为 六月 23, 2025， <a href="https://lxxb.cstam.org.cn/cn/article/pdf/preview/10.6052/0459-1879-16-348.pdf">https://lxxb.cstam.org.cn/cn/article/pdf/preview/10.6052/0459-1879-16-348.pdf</a>  </li>
+<li>隐患识别图集(轨道交通之隧道工程部分), 访问时间为 六月 23, 2025， <a href="http://zfcxjst.gd.gov.cn/download/%E9%9A%90%E6%82%A3%E8%AF%86%E5%88%AB%E5%9B%BE%E9%9B%86%EF%BC%88%E8%BD%A8%E9%81%93%E4%BA%A4%E9%80%9A%E4%B9%8B%E9%9A%A7%E9%81%93%E5%B7%A5%E7%A8%8B%E9%83%A8%E5%88%86%EF%BC%89.pdf">http://zfcxjst.gd.gov.cn/download/%E9%9A%90%E6%82%A3%E8%AF%86%E5%88%AB%E5%9B%BE%E9%9B%86%EF%BC%88%E8%BD%A8%E9%81%93%E4%BA%A4%E9%80%9A%E4%B9%8B%E9%9A%A7%E9%81%93%E5%B7%A5%E7%A8%8B%E9%83%A8%E5%88%86%EF%BC%89.pdf</a>  </li>
+<li>排水管堵塞引起的高铁隧道结构变形与渗流场特征模拟试验研究, 访问时间为 六月 23, 2025， <a href="https://www.cgejournal.com/cn/article/pdf/preview/10.11779/CJGE202104014.pdf">https://www.cgejournal.com/cn/article/pdf/preview/10.11779/CJGE202104014.pdf</a>  </li>
+<li>2022年青海门源6.9级地震交通系统震害与启示, 访问时间为 六月 23, 2025， <a href="https://pubs.cstam.org.cn/data/article/eeed/preview/pdf/20220402.pdf">https://pubs.cstam.org.cn/data/article/eeed/preview/pdf/20220402.pdf</a>  </li>
+<li>青海门源M6.9地震典型隧道破坏特征分析与启示PDF, 访问时间为 六月 23, 2025， <a href="http://dzgcxb.ijournals.cn/xbdz/article/html/20220319?st=article_issue">http://dzgcxb.ijournals.cn/xbdz/article/html/20220319?st=article_issue</a>  </li>
+<li>隧道工程质量及环境检测技术规范 - 广西壮族自治区交通运输厅, 访问时间为 六月 23, 2025， <a href="http://jtt.gxzf.gov.cn/ztzl/jtkjybzh/P020201208693070466797.pdf">http://jtt.gxzf.gov.cn/ztzl/jtkjybzh/P020201208693070466797.pdf</a>  </li>
+<li>CN203375549U - 能补充氧气、吸收二氧化碳的多功能空气净化器 - Google Patents, 访问时间为 六月 23, 2025， <a href="https://patents.google.com/patent/CN203375549U/zh">https://patents.google.com/patent/CN203375549U/zh</a>  </li>
+<li>CN111830210A - 空气质量监测方法、装置、系统和计算机设备 - Google Patents, 访问时间为 六月 23, 2025， <a href="https://patents.google.com/patent/CN111830210A/zh">https://patents.google.com/patent/CN111830210A/zh</a>  </li>
+<li>车辆进入山区时应该如何防范和应对滑坡、泥石流等自然灾害 - 汕尾市人民政府, 访问时间为 六月 23, 2025， <a href="https://www.shanwei.gov.cn/swsgaj/gkmlpt/content/1/1155/post_1155267.html">https://www.shanwei.gov.cn/swsgaj/gkmlpt/content/1/1155/post_1155267.html</a>  </li>
+<li>广东省公路隧道结构监测技术指南（试行）, 访问时间为 六月 23, 2025， <a href="https://td.gd.gov.cn/attachment/0/570/570893/4657284.pdf">https://td.gd.gov.cn/attachment/0/570/570893/4657284.pdf</a>  </li>
+<li>高速公路智慧隧道系统 - 中国电子云, 访问时间为 六月 23, 2025， <a href="https://cecloud.com/product/7037723246971588608.html">https://cecloud.com/product/7037723246971588608.html</a>  </li>
+<li>高速智能隧道解决方案-智慧隧道-华为企业业务, 访问时间为 六月 23, 2025， <a href="https://e.huawei.com/cn/industries/road-traffic/highway-tunnel/intelligent-tunnel">https://e.huawei.com/cn/industries/road-traffic/highway-tunnel/intelligent-tunnel</a>  </li>
+<li>轨道交通解决方案的激光雷达技术与人工智能视觉技术（第二部分 - Neuvition, 访问时间为 六月 23, 2025， <a href="https://www.neuvition.com/zh-CN/media/lidar-technology-and-ai-vision-technology-for-railway-transportation-solution-part-2-technical-part.html">https://www.neuvition.com/zh-CN/media/lidar-technology-and-ai-vision-technology-for-railway-transportation-solution-part-2-technical-part.html</a>  </li>
+<li>智能交通系统(ITS), 访问时间为 六月 23, 2025， <a href="http://www.flirmedia.com/MMC/CVS/Traffic/IT_0004_CN.pdf">http://www.flirmedia.com/MMC/CVS/Traffic/IT_0004_CN.pdf</a>  </li>
+<li>CN107288673B - 一种基于风速的公路隧道节能通风控制方法 - Google Patents, 访问时间为 六月 23, 2025， <a href="https://patents.google.com/patent/CN107288673B/zh">https://patents.google.com/patent/CN107288673B/zh</a>  </li>
+<li>隧道风速智能超声检测系统- CN202002939U - Google Patents, 访问时间为 六月 23, 2025， <a href="https://patents.google.com/patent/CN202002939U/zh">https://patents.google.com/patent/CN202002939U/zh</a>  </li>
+<li>CN101713691A - 分布式传感光纤隧道健康监测系统 - Google Patents, 访问时间为 六月 23, 2025， <a href="https://patents.google.com/patent/CN101713691A/zh">https://patents.google.com/patent/CN101713691A/zh</a>  </li>
+<li>CN104236827B - 一种基于温度梯度的隧道渗漏水检测方法及装置 - Google Patents, 访问时间为 六月 23, 2025， <a href="https://patents.google.com/patent/CN104236827B/zh">https://patents.google.com/patent/CN104236827B/zh</a>  </li>
+<li>“全智云”隧道结构智能监测预警系统 - 浙江交通, 访问时间为 六月 23, 2025， <a href="http://jtyst.zj.gov.cn/module/download/downfile.jsp?classid=0&filename=52ed2b3c33744e329a85853f3e66343c.pdf">http://jtyst.zj.gov.cn/module/download/downfile.jsp?classid=0\&amp;filename=52ed2b3c33744e329a85853f3e66343c.pdf</a>  </li>
+<li>隧道巡检机器人创业项目, 访问时间为 六月 23, 2025， <a href="http://gjcxcy.bjtu.edu.cn/UpLoadFileCGZB_TJ/%E5%A4%A7%E8%BF%9E%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6-cy-%E9%9A%A7%E9%81%93%E5%B7%A1%E6%A3%80%E6%9C%BA%E5%99%A8%E4%BA%BA_nh10141652419.pdf">http://gjcxcy.bjtu.edu.cn/UpLoadFileCGZB_TJ/%E5%A4%A7%E8%BF%9E%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6-cy-%E9%9A%A7%E9%81%93%E5%B7%A1%E6%A3%80%E6%9C%BA%E5%99%A8%E4%BA%BA_nh10141652419.pdf</a>  </li>
+<li>云深处隧道巡检机器狗首度交付新加坡电网, 访问时间为 六月 23, 2025， <a href="https://www.deeprobotics.cn/robot/wap/article/id/265.html">https://www.deeprobotics.cn/robot/wap/article/id/265.html</a>  </li>
+<li>云深处X30 四足机器人助力新加坡电力隧道巡检革新 - 低碳网, 访问时间为 六月 23, 2025， <a href="https://www.ditan.com/news/hot/6323.html">https://www.ditan.com/news/hot/6323.html</a>  </li>
+<li>我国隧道建造迈入数字化智能化 - 新华网, 访问时间为 六月 23, 2025， <a href="http://www.news.cn/digital/20241121/42086679619144ad9730ca8ba792a204/c.html">http://www.news.cn/digital/20241121/42086679619144ad9730ca8ba792a204/c.html</a>  </li>
+<li>目录 - 中国铁道学会, 访问时间为 六月 23, 2025， <a href="https://crs.org.cn/u/cms/www/202412/31153505ponf.pdf">https://crs.org.cn/u/cms/www/202412/31153505ponf.pdf</a>  </li>
+<li>数字孪生隧道推动基础设施安全风险管控 - 四维图新, 访问时间为 六月 23, 2025， <a href="https://www.navinfo.com/gongsixinwen/137">https://www.navinfo.com/gongsixinwen/137</a>  </li>
+<li>浙江首个数字孪生隧道全息感知平台正式上线, 访问时间为 六月 23, 2025， <a href="http://zj.people.com.cn/n2/2023/0921/c370990-40579736.html">http://zj.people.com.cn/n2/2023/0921/c370990-40579736.html</a>  </li>
+<li>面向无驾驶人的路侧车路协同系统分阶段建设导则, 访问时间为 六月 23, 2025， <a href="https://www.lingang.gov.cn/upload/1/cms/content/editor/1674105925358.pdf">https://www.lingang.gov.cn/upload/1/cms/content/editor/1674105925358.pdf</a>  </li>
+<li>车路协同自动驾驶系统（车路云一体化系统） 协同发展框架 - 中国通信学会, 访问时间为 六月 23, 2025， <a href="https://www.china-cic.cn/upload/202301/17/db3ee55551bd4fb2b2d978db86b90160.pdf">https://www.china-cic.cn/upload/202301/17/db3ee55551bd4fb2b2d978db86b90160.pdf</a>  </li>
+<li>公路隧道辅助通道设计细则, 访问时间为 六月 23, 2025， <a href="https://dbba.sacinfo.org.cn/attachment/downloadStdFile?pk=451a3c1f5ebeb78b1bc0c66c0aef7a1e86e88b2180b840516d0011b38c1303ec">https://dbba.sacinfo.org.cn/attachment/downloadStdFile?pk=451a3c1f5ebeb78b1bc0c66c0aef7a1e86e88b2180b840516d0011b38c1303ec</a>  </li>
+<li>《公路隧道施工技术规范》（JTG/T3660-2020）【全文附PDF版下载】 - 郑州外资企业服务中心, 访问时间为 六月 23, 2025， <a href="https://www.waizi.org.cn/bz/86131.html">https://www.waizi.org.cn/bz/86131.html</a>  </li>
+<li>《公路隧道运营技术规范》 - 中华人民共和国交通运输部, 访问时间为 六月 23, 2025， <a href="https://www.mot.gov.cn/yijianzhengji/201705/P020170512323395056654.pdf">https://www.mot.gov.cn/yijianzhengji/201705/P020170512323395056654.pdf</a>  </li>
+<li>公路隧道安全设施设置技术规范 - 北京市市场监督管理局, 访问时间为 六月 23, 2025， <a href="https://scjgj.beijing.gov.cn/hdjl/myzj/bzzxdyjzj/202504/P020250416605535259602.pdf">https://scjgj.beijing.gov.cn/hdjl/myzj/bzzxdyjzj/202504/P020250416605535259602.pdf</a>  </li>
+<li>铁路安全管理条例_国家铁路局, 访问时间为 六月 23, 2025， <a href="https://www.nra.gov.cn/xxgk/gkml/ztjg/gfzd/xzzf/202111/t20211111_261218.shtml">https://www.nra.gov.cn/xxgk/gkml/ztjg/gfzd/xzzf/202111/t20211111_261218.shtml</a>  </li>
+<li>铁路安全管理条例_中国政务, 访问时间为 六月 23, 2025， <a href="http://zw.china.com.cn/2016-05/13/content_38447674.htm">http://zw.china.com.cn/2016-05/13/content_38447674.htm</a>  </li>
+<li>交通运输部关于印发《城市轨道交通运营安全风险分级管控和隐患排查治理管理办法》的通知 ... - 中国政府网, 访问时间为 六月 23, 2025， <a href="https://www.gov.cn/gongbao/2024/issue_11746/202412/content_6991645.html">https://www.gov.cn/gongbao/2024/issue_11746/202412/content_6991645.html</a>  </li>
+<li>城市轨道交通运营技术规范, 访问时间为 六月 23, 2025， <a href="https://www.mot.gov.cn/yijianzhengji/201710/P020171024479432660729.pdf">https://www.mot.gov.cn/yijianzhengji/201710/P020171024479432660729.pdf</a></li>
+</ol>
+
+    </body>
+</html>
