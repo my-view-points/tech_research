@@ -3,9 +3,11 @@
 ## 2025
 
 ### 2025-08
+[2025-08-04 图片增强对目标追踪的影响评估方案](2025/08/04/01_eval_image_enhance/readme.md)
+
 [2025-08-03 相量距离](2025/08/03/01_phasor_distance/readme.md)
 
-[2025-08-02 相似图片向量检查](2025/08/02/03_image_search/readme.md)
+[2025-08-02 相似图片向量检索](2025/08/02/03_image_search/readme.md)
 
 [2025-08-02 隧道内车辆目标跟踪图像增强](2025/08/02/02_tunnel_car_tracking/readme.md)
 
